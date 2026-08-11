@@ -1,0 +1,44 @@
+{
+  "modules": [
+    {
+      "id": "attendance",
+      "title": "考勤 · 剩余加班",
+      "icon": "⏰",
+      "subtitle": "今日扣减 / 周末加班 / 全月余额",
+      "type": "iframe",
+      "src": "https://jayyangstore.github.io/attendance-dashboard/",
+      "aspect": "16:10",
+      "order": 1
+    },
+    {
+      "id": "desktop",
+      "title": "桌面文件索引",
+      "icon": "📁",
+      "subtitle": "Desktop + Downloads 文件树",
+      "type": "iframe",
+      "src": "https://jayyangstore.github.io/desktop-index/",
+      "aspect": "16:10",
+      "order": 2
+    },
+    {
+      "id": "daily-summary",
+      "title": "每日总结",
+      "icon": "📝",
+      "subtitle": "Hermes 自动生成的昨日总结",
+      "type": "text",
+      "src": "latest_summary.md",
+      "order": 3
+    },
+    {
+      "id": "llm-usage",
+      "title": "LLM 用量日报",
+      "icon": "📊",
+      "subtitle": "DeepSeek / MiniMax 余额 + 5h 窗口",
+      "type": "iframe",
+      "src": "https://jayyangstore.github.io/attendance-dashboard/",
+      "aspect": "16:10",
+      "order": 4,
+      "_todo": "替换为真实 LLM 看板 URL（待定）"
+    }
+  ]
+}
