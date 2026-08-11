@@ -28,7 +28,36 @@
       "type": "iframe",
       "src": "https://jayyangstore.github.io/desktop-index/",
       "order": 3
+    },
+    {
+      "id": "lixiang",
+      "title": "奥迪 · 立项汇总",
+      "icon": "📊",
+      "subtitle": "2026 立项金额 / 7-9月预算 / 月度明细",
+      "type": "kpi",
+      "data": "data/lixiang_kpi.json",
+      "detailUrl": "https://jayyangstore.github.io/ai-workbench/lixiang.html",
+      "order": 4
+    },
+    {
+      "id": "baoxiao",
+      "title": "奥迪 · 报销追踪",
+      "icon": "💳",
+      "subtitle": "团队月度报销 / 个人合计",
+      "type": "kpi",
+      "data": "data/baoxiao_kpi.json",
+      "detailUrl": "https://jayyangstore.github.io/ai-workbench/baoxiao.html",
+      "order": 5
+    },
+    {
+      "id": "quyu",
+      "title": "奥迪 · 区域费用明细",
+      "icon": "💰",
+      "subtitle": "客户报销 / 报价 / 成本对照",
+      "type": "kpi",
+      "data": "data/quyu_kpi.json",
+      "detailUrl": "https://jayyangstore.github.io/ai-workbench/quyu.html",
+      "order": 6
     }
-  ],
-  "_todo": "奥迪3模块待加：立项汇总 / 区域费用明细 / 报销追踪"
+  ]
 }
