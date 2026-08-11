@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Jay · AI 工作台</title>
+<style>
+  /* ============ Reset & Base ============ */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0a0e14;
+    color: #e2e8f0;
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+  a { color: #3b82f6; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ============ Password Gate ============ */
+  #gate {
+    position: fixed; inset: 0;
+    background: linear-gradient(135deg, #0a0e14 0%, #1a2332 100%);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9999;
+  }
+  #gate .card {
+    background: #1a2332;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    padding: 40px 32px;
+    width: 90%;
+    max-width: 380px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+  #gate h1 {
+    font-size: 22px;
+    margin-bottom: 8px;
+    color: #f1f5f9;
+  }
+  #gate p {
+    color: #94a3b8;
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+  #gate input {
+    width: 100%;
+    padding: 12px 14px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #e2e8f0;
+    font-size: 15px;
+    margin-bottom: 12px;
+    font-family: inherit;
+  }
+  #gate input:focus {
+    outline: none;
+    border-color: #10b981;
+  }
+  #gate button {
+    width: 100%;
+    padding: 12px;
+    background: #10b981;
+    color: #0a0e14;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  #gate button:hover { background: #059669; }
+  #gate .err {
+    color: #ef4444;
+    font-size: 13px;
+    margin-top: 8px;
+    display: none;
+  }
+  #gate .hint {
+    color: #64748b;
+    font-size: 12px;
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  /* ============ Top Bar ============ */
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px;
+    background: #1a2332;
+    border-bottom: 1px solid #334155;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .topbar h1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f1f5f9;
+  }
+  .topbar .meta {
+    color: #94a3b8;
+    font-size: 13px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .topbar .meta .badge {
+    padding: 4px 10px;
+    background: #10b98120;
+    color: #10b981;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+
+  /* ============ Grid ============ */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 20px;
+    padding: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .card {
+    background: #1a2332;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #475569; }
+  .card .head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 18px;
+    border-bottom: 1px solid #334155;
+    background: #0f172a;
+  }
+  .card .head .title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #f1f5f9;
+  }
+  .card .head .title .icon { font-size: 18px; }
+  .card .head .subtitle {
+    font-size: 12px;
+    color: #94a3b8;
+    margin-top: 2px;
+  }
+  .card .head .actions {
+    display: flex; gap: 6px;
+  }
+  .card .head .actions button {
+    background: transparent;
+    border: 1px solid #334155;
+    color: #94a3b8;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .card .head .actions button:hover {
+    color: #e2e8f0;
+    border-color: #475569;
+  }
+  .card .body {
+    flex: 1;
+    overflow: auto;
+  }
+  .card iframe {
+    width: 100%;
+    border: none;
+    display: block;
+  }
+  .card.text .body {
+    padding: 18px;
+    line-height: 1.7;
+    color: #cbd5e1;
+    font-size: 14px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .card.text .body.empty {
+    color: #64748b;
+    font-style: italic;
+    text-align: center;
+    padding: 40px 18px;
+  }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 767px) {
+    .grid { grid-template-columns: 1fr; padding: 16px; gap: 14px; }
+    .topbar { padding: 12px 16px; flex-wrap: wrap; gap: 8px; }
+    .topbar h1 { font-size: 16px; }
+    .topbar .meta { font-size: 12px; gap: 10px; }
+    .card .head { padding: 12px 14px; }
+    .card.text .body { padding: 14px; font-size: 13px; }
+  }
+
+  /* ============ aspect ratio helper ============ */
+  .aspect-16-10 { aspect-ratio: 16 / 10; }
+  .aspect-16-9 { aspect-ratio: 16 / 9; }
+  .aspect-4-3 { aspect-ratio: 4 / 3; }
+  iframe.aspect-16-10 { height: auto; }
+</style>
+</head>
+<body>
+
+<!-- ============ 密码门 ============ -->
+<div id="gate">
+  <div class="card">
+    <h1>🔒 Jay AI 工作台</h1>
+    <p>请输入访问密码</p>
+    <input type="password" id="pw" placeholder="密码" autofocus />
+    <button onclick="unlock()">进入</button>
+    <div class="err" id="err">密码错误</div>
+    <div class="hint">私人聚合面板 · 密码存浏览器 localStorage</div>
+  </div>
+</div>
+
+<!-- ============ 主体 ============ -->
+<div id="app" style="display:none;">
+  <div class="topbar">
+    <h1>🚀 Jay · AI 工作台</h1>
+    <div class="meta">
+      <span id="clock"></span>
+      <span class="badge" id="auth-status">🔓 已解锁</span>
+      <button onclick="lock()" style="background:transparent;border:1px solid #334155;color:#94a3b8;padding:4px 10px;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit;">锁屏</button>
+    </div>
+  </div>
+
+  <div class="grid" id="grid">
+    <!-- 模块卡片由 JS 渲染 -->
+  </div>
+</div>
+
+<script>
+// ============ 密码（修改这里改密码） ============
+const APP_PASSWORD = 'audi2026';
+const STORAGE_KEY = 'ai_workbench_unlocked';
+
+// ============ 密码门逻辑 ============
+function unlock() {
+  const pw = document.getElementById('pw').value;
+  if (pw === APP_PASSWORD) {
+    localStorage.setItem(STORAGE_KEY, '1');
+    showApp();
+  } else {
+    document.getElementById('err').style.display = 'block';
+    document.getElementById('pw').value = '';
+    document.getElementById('pw').focus();
+  }
+}
+function lock() {
+  localStorage.removeItem(STORAGE_KEY);
+  document.getElementById('pw').value = '';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('gate').style.display = 'flex';
+}
+function showApp() {
+  document.getElementById('gate').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  renderModules();
+  startClock();
+}
+
+// 回车提交
+document.getElementById('pw').addEventListener('keydown', e => {
+  if (e.key === 'Enter') unlock();
+});
+
+// 进来时检查 localStorage
+if (localStorage.getItem(STORAGE_KEY) === '1') showApp();
+
+// ============ 时钟 ============
+function startClock() {
+  const el = document.getElementById('clock');
+  function tick() {
+    const d = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    el.textContent = `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  }
+  tick();
+  setInterval(tick, 1000);
+}
+
+// ============ 模块渲染 ============
+async function renderModules() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '<div style="color:#94a3b8;text-align:center;padding:40px;">加载模块中…</div>';
+
+  let modules = [];
+  try {
+    const r = await fetch('modules.json', {cache: 'no-store'});
+    modules = (await r.json()).modules || [];
+  } catch (e) {
+    grid.innerHTML = '<div style="color:#ef4444;text-align:center;padding:40px;">⚠️ 加载 modules.json 失败</div>';
+    return;
+  }
+
+  // 按 order 排序
+  modules.sort((a, b) => (a.order || 99) - (b.order || 99));
+
+  grid.innerHTML = '';
+  for (const m of modules) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    const aspectCls = 'aspect-' + (m.aspect || '16-10').replace(':', '-');
+
+    if (m.type === 'iframe') {
+      card.innerHTML = `
+        <div class="head">
+          <div>
+            <div class="title"><span class="icon">${m.icon}</span>${m.title}</div>
+            <div class="subtitle">${m.subtitle || ''}</div>
+          </div>
+          <div class="actions">
+            <button onclick="refreshIframe(this)" data-src="${m.src}" title="刷新模块">🔄</button>
+            <button onclick="window.open('${m.src}','_blank')" title="新窗口打开">↗</button>
+          </div>
+        </div>
+        <div class="body">
+          <iframe class="${aspectCls}" src="${m.src}" loading="lazy"></iframe>
+        </div>`;
+    } else if (m.type === 'text') {
+      card.classList.add('text');
+      let text = '';
+      try {
+        const r = await fetch(m.src, {cache: 'no-store'});
+        text = await r.text();
+      } catch (e) {
+        text = '';
+      }
+      card.innerHTML = `
+        <div class="head">
+          <div>
+            <div class="title"><span class="icon">${m.icon}</span>${m.title}</div>
+            <div class="subtitle">${m.subtitle || ''}</div>
+          </div>
+          <div class="actions">
+            <button onclick="refreshText(this)" data-card="${m.id}" title="刷新">🔄</button>
+          </div>
+        </div>
+        <div class="body ${text.trim() ? '' : 'empty'}">${text.trim() ? escapeHtml(text) : '（暂无内容）'}</div>`;
+    } else {
+      card.innerHTML = `<div class="head"><div class="title">${m.title}</div></div><div class="body">未知类型: ${m.type}</div>`;
+    }
+    grid.appendChild(card);
+  }
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+}
+
+function refreshIframe(btn) {
+  const iframe = btn.closest('.card').querySelector('iframe');
+  iframe.src = iframe.src.split('?')[0] + '?t=' + Date.now();
+}
+function refreshText(btn) {
+  renderModules();
+}
+</script>
+
+</body>
+</html>
