@@ -4,11 +4,21 @@
       "id": "attendance",
       "title": "考勤 · 剩余加班",
       "icon": "⏰",
-      "subtitle": "今日扣减 / 周末加班 / 全月余额",
-      "type": "iframe",
-      "src": "https://jayyangstore.github.io/attendance-dashboard/",
-      "aspect": "16:10",
+      "subtitle": "本月扣减 / 周末加班 / 全月余额",
+      "type": "kpi",
+      "data": "data/attendance_kpi.json",
+      "detailUrl": "https://jayyangstore.github.io/attendance-dashboard/",
       "order": 1
+    },
+    {
+      "id": "llm-usage",
+      "title": "LLM 用量日报",
+      "icon": "📊",
+      "subtitle": "DeepSeek 余额 + MiniMax 5h/周窗",
+      "type": "kpi",
+      "data": "data/llm_usage_kpi.json",
+      "detailUrl": "https://jayyangstore.github.io/usage/",
+      "order": 2
     },
     {
       "id": "desktop",
@@ -17,18 +27,8 @@
       "subtitle": "Desktop + Downloads 文件树",
       "type": "iframe",
       "src": "https://jayyangstore.github.io/desktop-index/",
-      "aspect": "16:10",
-      "order": 2
-    },
-    {
-      "id": "llm-usage",
-      "title": "LLM 用量日报",
-      "icon": "📊",
-      "subtitle": "DeepSeek / MiniMax 余额 + 5h 窗口",
-      "type": "iframe",
-      "src": "https://jayyangstore.github.io/usage/",
-      "aspect": "16:10",
-      "order": 4
+      "order": 3
     }
-  ]
+  ],
+  "_todo": "奥迪3模块待加：立项汇总 / 区域费用明细 / 报销追踪"
 }
