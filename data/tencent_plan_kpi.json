@@ -1,0 +1,16 @@
+{
+  "hero": {
+    "value": "📋 联合活动",
+    "label": "BTL-联合活动 主表（待 WorkBuddy 拉取）"
+  },
+  "progress": {
+    "pct": 0,
+    "text": "WorkBuddy 启动后自动同步"
+  },
+  "kpis": [
+    {"k": "状态", "v": "占位·待拉取"},
+    {"k": "数据源", "v": "docs.qq.com/DVGJDQWtXRVR1T2R1"},
+    {"k": "Sheet", "v": "BTL-联合活动 (198×27)"},
+    {"k": "更新方式", "v": "WorkBuddy 后台监听"}
+  ]
+}
