@@ -7,10 +7,11 @@ h1{font-size:20px;color:#f1f5f9}.kpi{display:flex;gap:16px;flex-wrap:wrap;margin
 .tbl-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;margin-top:16px;background:#1a2332;border-radius:8px;overflow:hidden;font-size:13px;min-width:900px}
 th,td{padding:8px 10px;text-align:right;border-bottom:1px solid #334155}
-th{background:#1F4E78;color:#fff;font-weight:600;position:sticky;top:0;z-index:2}
-tr:last-child{position:sticky;bottom:0;z-index:1}
+thead th{background:#1F4E78;color:#fff;font-weight:600;text-align:center;position:sticky;top:0;z-index:2}
+thead tr:nth-child(2) th{top:38px;background:#2b6cb0;z-index:2}
+tfoot td{position:sticky;bottom:0;z-index:1;background:#1e3a8a;color:#fff;font-weight:700}
 td:first-child,th:first-child{text-align:left;position:sticky;left:0;background:inherit}
-tr:hover{background:#0f172a}.grp{color:#94a3b8;font-size:11px}
+tr:hover{background:#0f172a}.grp{color:#93c5fd;font-size:11px;font-weight:400}
 </style></head><body>
 <h1>📊 奥迪立项月度汇总（2026）</h1>
 <div class="kpi">
@@ -21,6 +22,7 @@ tr:hover{background:#0f172a}.grp{color:#94a3b8;font-size:11px}
 </div>
 <div class="tbl-wrap">
 <table>
+<thead>
 <tr>
   <th rowspan="2">月份</th>
   <th colspan="2">市场费用</th><th colspan="2">销售费用</th><th colspan="2">用户运营</th><th colspan="2">小计</th><th rowspan="2">备注</th>
@@ -28,6 +30,8 @@ tr:hover{background:#0f172a}.grp{color:#94a3b8;font-size:11px}
 <tr>
   <th class="grp">立项金额</th><th class="grp">实际执行</th><th class="grp">立项金额</th><th class="grp">实际执行</th><th class="grp">立项金额</th><th class="grp">实际执行</th><th class="grp">立项金额</th><th class="grp">实际执行</th>
 </tr>
+</thead>
+<tbody>
 <tr>
     <td>1月</td>
     <td>¥161,710</td><td>¥161,710</td>
@@ -99,6 +103,7 @@ tr:hover{background:#0f172a}.grp{color:#94a3b8;font-size:11px}
     <td>¥12,894,261</td><td>¥12,804,379</td>
     <td>—</td>
   </tr>
+</tbody>
 </table>
 </div>
 </body></html>
