@@ -1,10 +1,13 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>日常报销追踪</title><style>
 body{font-family:-apple-system,'PingFang SC',sans-serif;background:#0a0e14;color:#e2e8f0;margin:0;padding:20px}
-h1{font-size:20px;color:#f1f5f9}table{width:100%;border-collapse:collapse;margin-top:16px;background:#1a2332;border-radius:8px;overflow:hidden}
+h1{font-size:20px;color:#f1f5f9}h2{font-size:17px;color:#f1f5f9;margin-top:28px}
+table{width:100%;border-collapse:collapse;margin-top:16px;background:#1a2332;border-radius:8px;overflow:hidden}
 th,td{padding:10px 12px;text-align:right;border-bottom:1px solid #334155;font-size:13px}
-th{background:#1F4E78;color:#fff}td:first-child,th:first-child{text-align:left}
-tr:last-child td{border-bottom:none}tr:hover{background:#0f172a}
+thead th{background:#1F4E78;color:#fff;position:sticky;top:0;z-index:20}
+tfoot td{position:sticky;bottom:0;z-index:10;background:#1e3a8a;color:#fff;font-weight:700}
+td:first-child,th:first-child{text-align:left}
+tr:hover{background:#0f172a}
 .hl{background:#10b98120;font-weight:700}
 
 .back-home{display:inline-block;margin-bottom:14px;background:#1a2332;color:#e2e8f0;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:13px;border:1px solid #334155;transition:all .15s}
@@ -13,7 +16,22 @@ tr:last-child td{border-bottom:none}tr:hover{background:#0f172a}
 </style></head><body>
 <a class="back-home" href="./">← 返回主页面</a>
 <h1>💳 日常报销追踪（团队）</h1>
-<table><tr><th>人员</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>合计</th></tr>
-<tr><td>黄东伟</td><td>0</td><td>127</td><td>769</td><td>992</td><td>1,889</td></tr><tr><td>黄智光</td><td>877</td><td>105</td><td>0</td><td>195</td><td>1,178</td></tr><tr class='hl'><td>杨杰</td><td>135</td><td>806</td><td>147</td><td>0</td><td>1,088</td></tr><tr><td>郭凤娴</td><td>0</td><td>779</td><td>68</td><td>0</td><td>847</td></tr><tr><td>刘树钟</td><td>0</td><td>294</td><td>252</td><td>171</td><td>718</td></tr><tr><td>李文宝</td><td>0</td><td>567</td><td>0</td><td>0</td><td>567</td></tr><tr><td>柳茜</td><td>392</td><td>0</td><td>0</td><td>0</td><td>392</td></tr><tr><td>吴雄洁</td><td>0</td><td>248</td><td>0</td><td>0</td><td>248</td></tr><tr><td>张志伟</td><td>233</td><td>0</td><td>0</td><td>0</td><td>233</td></tr><tr><td>万超</td><td>0</td><td>15</td><td>141</td><td>53</td><td>210</td></tr><tr><td>区剑帆</td><td>0</td><td>0</td><td>0</td><td>156</td><td>156</td></tr><tr><td>刘禹华</td><td>99</td><td>0</td><td>0</td><td>0</td><td>99</td></tr><tr><td>张心丁</td><td>0</td><td>0</td><td>81</td><td>0</td><td>81</td></tr><tr><td>陈洋洋</td><td>0</td><td>70</td><td>0</td><td>0</td><td>70</td></tr><tr><td>刘碧莎</td><td>26</td><td>15</td><td>27</td><td>0</td><td>68</td></tr><tr><td>钟敏捷</td><td>0</td><td>0</td><td>44</td><td>0</td><td>44</td></tr><tr><td>李健豪</td><td>0</td><td>0</td><td>31</td><td>0</td><td>31</td></tr><tr><td>植慧贤</td><td>0</td><td>30</td><td>0</td><td>0</td><td>30</td></tr><tr><td>马继就</td><td>25</td><td>0</td><td>0</td><td>0</td><td>25</td></tr><tr><td>郭莹莹</td><td>0</td><td>0</td><td>24</td><td>0</td><td>24</td></tr>
+
+<h2>📋 个人报销明细</h2>
+<table>
+<thead><tr><th>人员</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>合计</th></tr></thead>
+<tbody>
+<tr><td>黄东伟</td><td>¥0</td><td>¥127</td><td>¥769</td><td>¥992</td><td>¥1,889</td></tr><tr><td>黄智光</td><td>¥877</td><td>¥105</td><td>¥0</td><td>¥195</td><td>¥1,178</td></tr><tr class='hl'><td>杨杰</td><td>¥135</td><td>¥806</td><td>¥147</td><td>¥0</td><td>¥1,088</td></tr><tr><td>郭凤娴</td><td>¥0</td><td>¥779</td><td>¥68</td><td>¥0</td><td>¥847</td></tr><tr><td>刘树钟</td><td>¥0</td><td>¥294</td><td>¥252</td><td>¥171</td><td>¥718</td></tr><tr><td>李文宝</td><td>¥0</td><td>¥567</td><td>¥0</td><td>¥0</td><td>¥567</td></tr><tr><td>柳茜</td><td>¥392</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥392</td></tr><tr><td>吴雄洁</td><td>¥0</td><td>¥248</td><td>¥0</td><td>¥0</td><td>¥248</td></tr><tr><td>张志伟</td><td>¥233</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥233</td></tr><tr><td>万超</td><td>¥0</td><td>¥15</td><td>¥141</td><td>¥53</td><td>¥210</td></tr><tr><td>区剑帆</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥156</td><td>¥156</td></tr><tr><td>刘禹华</td><td>¥99</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥99</td></tr><tr><td>张心丁</td><td>¥0</td><td>¥0</td><td>¥81</td><td>¥0</td><td>¥81</td></tr><tr><td>陈洋洋</td><td>¥0</td><td>¥70</td><td>¥0</td><td>¥0</td><td>¥70</td></tr><tr><td>刘碧莎</td><td>¥26</td><td>¥15</td><td>¥27</td><td>¥0</td><td>¥68</td></tr><tr><td>钟敏捷</td><td>¥0</td><td>¥0</td><td>¥44</td><td>¥0</td><td>¥44</td></tr><tr><td>李健豪</td><td>¥0</td><td>¥0</td><td>¥31</td><td>¥0</td><td>¥31</td></tr><tr><td>植慧贤</td><td>¥0</td><td>¥30</td><td>¥0</td><td>¥0</td><td>¥30</td></tr><tr><td>马继就</td><td>¥25</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥25</td></tr><tr><td>郭莹莹</td><td>¥0</td><td>¥0</td><td>¥24</td><td>¥0</td><td>¥24</td></tr>
+</tbody>
+<tfoot><tr><td>月度合计</td><td>¥1,787</td><td>¥3,057</td><td>¥1,585</td><td>¥1,568</td><td>¥7,997</td></tr></tfoot>
+</table>
+
+<h2>📊 费用类型分析（按月份）</h2>
+<table>
+<thead><tr><th>费用类别</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>合计</th></tr></thead>
+<tbody>
+<tr><td>交通费</td><td>¥876</td><td>¥1,475</td><td>¥1,048</td><td>¥672</td><td>¥4,071</td></tr><tr><td>餐费</td><td>¥115</td><td>¥870</td><td>¥285</td><td>¥315</td><td>¥1,585</td></tr><tr><td>拍摄设备采购</td><td>¥701</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥701</td></tr><tr><td>住宿费</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥450</td><td>¥450</td></tr><tr><td>交通2</td><td>¥0</td><td>¥227</td><td>¥163</td><td>¥0</td><td>¥389</td></tr><tr><td>U盘</td><td>¥0</td><td>¥156</td><td>¥0</td><td>¥0</td><td>¥156</td></tr><tr><td>交通1</td><td>¥0</td><td>¥68</td><td>¥60</td><td>¥0</td><td>¥127</td></tr><tr><td>纸巾</td><td>¥0</td><td>¥121</td><td>¥0</td><td>¥0</td><td>¥121</td></tr><tr><td>运营</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥113</td><td>¥113</td></tr><tr><td>即梦AI会员</td><td>¥0</td><td>¥69</td><td>¥0</td><td>¥0</td><td>¥69</td></tr><tr><td>高速费</td><td>¥0</td><td>¥57</td><td>¥0</td><td>¥0</td><td>¥57</td></tr><tr><td>餐费补贴</td><td>¥50</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥50</td></tr><tr><td>停车费</td><td>¥45</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥45</td></tr><tr><td>餐补</td><td>¥0</td><td>¥15</td><td>¥30</td><td>¥0</td><td>¥45</td></tr><tr><td>ai软件vip</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥18</td><td>¥18</td></tr>
+</tbody>
+<tfoot><tr><td>合计</td><td>¥1,787</td><td>¥3,057</td><td>¥1,585</td><td>¥1,568</td><td>¥7,997</td></tr></tfoot>
 </table>
 </body></html>
