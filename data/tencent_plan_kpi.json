@@ -1,24 +1,32 @@
 {
   "hero": {
-    "value": "📋 联合活动",
-    "label": "BTL-联合活动 主表（待 WorkBuddy 拉取）"
+    "value": "16 个",
+    "label": "08月计划项目"
+  },
+  "progress": {
+    "pct": 100,
+    "text": "¥2,138,418"
   },
   "kpis": [
     {
-      "k": "状态",
-      "v": "占位·待拉取"
+      "k": "联合活动",
+      "v": "2 个",
+      "color": "pos"
     },
     {
-      "k": "数据源",
-      "v": "docs.qq.com/DVGJDQWtXRVR1T2R1"
+      "k": "单店活动",
+      "v": "14 个",
+      "color": "pos"
     },
     {
-      "k": "Sheet",
-      "v": "BTL-联合活动 (198×27)"
+      "k": "总金额",
+      "v": "¥2,138,418",
+      "color": "pos"
     },
     {
-      "k": "更新方式",
-      "v": "WorkBuddy 后台监听"
+      "k": "数据截止",
+      "v": "08-12",
+      "color": "neutral"
     }
   ]
 }
