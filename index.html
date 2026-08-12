@@ -108,6 +108,7 @@
   }
   .card:hover .drag-hint { opacity: 0.6; }
   .card {
+    position: relative;
     background: #1a2332;
     border: 1px solid #334155;
     border-radius: 12px;
@@ -326,7 +327,7 @@ async function renderModules() {
   if (window.Sortable) {
     Sortable.create(grid, {
       animation: 150,
-      handle: '.card',
+      handle: '.drag-handle',
       ghostClass: 'dragging',
       onEnd: function(evt) {
         // 拖拽后保存新顺序到 localStorage
@@ -343,6 +344,7 @@ function renderCard(m) {
   card.className = 'card';
   const actionsHtml = `
     <div class="actions">
+      <button class="drag-handle" title="按住拖动排序" onmousedown="event.stopPropagation()">⠿</button>
       <button onclick="refreshCard(this)" data-id="${m.id}" title="刷新">🔄</button>
       ${m.detailUrl ? `<button onclick="window.open('${m.detailUrl}','_blank')" title="详情页">↗</button>` : ''}
     </div>`;
@@ -410,7 +412,7 @@ function renderKpiBody(d) {
     html += '<div class="kpi-grid">';
     for (const k of d.kpis) {
       const vCls = k.color || '';
-      html += `<div class="kpi"><div class="k">${escapeHtml(k.k)}</div><div class="v ${vCls}">${escapeHtml(k.v)}</div></div>`;
+      html += `<div class="kpi"><div class="k">${escapeHtml(k.k)}</div><div class="v ${vCls}">${escapeHtml(k.v)}</div>${k.hint ? `<div class="khint">${escapeHtml(k.hint)}</div>` : ''}</div>`;
     }
     html += '</div>';
   }
