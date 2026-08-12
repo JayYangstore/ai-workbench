@@ -64,7 +64,8 @@ function render() {
 
   const months = [...new Set(D.all_projects.map(p => p.month))].sort();
   document.getElementById('monthNav').innerHTML =
-    months.map(m => `<button data-m="${m}" class="${m === D.month ? 'active' : ''}">${parseInt(m)}月</button>`).join('');
+    `<button data-m="all" class="${curMonth === 'all' ? 'active' : ''}">全部</button>` +
+    months.map(m => `<button data-m="${m}" class="${curMonth === m ? 'active' : ''}">${parseInt(m)}月</button>`).join('');
   document.querySelectorAll('.month-nav button').forEach(btn => {
     btn.onclick = () => { curMonth = btn.dataset.m; renderFilters(); renderTable(); document.querySelectorAll('.month-nav button').forEach(b => b.classList.remove('active')); btn.classList.add('active'); };
   });
@@ -75,7 +76,7 @@ function render() {
 
 function renderFilters() {
   const month = curMonth || D.month;
-  const list = D.all_projects.filter(p => p.month === month);
+  const list = month === 'all' ? D.all_projects : D.all_projects.filter(p => p.month === month);
   const types = [...new Set(list.map(p => p.type))];
   const cats = [...new Set(list.map(p => p.cat).filter(Boolean))];
   document.getElementById('filters').innerHTML = `
@@ -91,7 +92,13 @@ function renderFilters() {
 
 function getList() {
   const month = curMonth || D.month;
-  let list = D.all_projects.filter(p => p.month === month);
+  let list;
+  if (month === 'all') {
+    // 全部项目：按月份倒序（08 最先，03 最后），同月内保持原顺序
+    list = [...D.all_projects].sort((a, b) => (b.month || '').localeCompare(a.month || ''));
+  } else {
+    list = D.all_projects.filter(p => p.month === month);
+  }
   if (filters.type) list = list.filter(p => p.type === filters.type);
   if (filters.cat) list = list.filter(p => p.cat === filters.cat);
   return list;
