@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>月度活动计划 · 明细</title><style>
+body{font-family:-apple-system,'PingFang SC',sans-serif;background:#0a0e14;color:#e2e8f0;margin:0;padding:20px}
+h1{font-size:20px;color:#f1f5f9}.kpi{display:flex;gap:16px;flex-wrap:wrap;margin:16px 0}
+.kpi .box{flex:1;min-width:150px;background:#1a2332;padding:14px;border-radius:8px;text-align:center}
+.kpi .box .v{font-size:18px;font-weight:700;color:#10b981}.kpi .box .k{font-size:12px;color:#94a3b8;margin-top:4px}
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin-top:16px;background:#1a2332;border-radius:8px;overflow:hidden;font-size:13px;min-width:900px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid #334155}
+th{background:#1F4E78;color:#fff;font-weight:600;position:sticky;top:0;white-space:nowrap}
+td.num{font-family:Menlo,monospace;font-size:12px;color:#94a3b8}
+td.amt{text-align:right;font-variant-numeric:tabular-nums}
+tr:hover{background:#0f172a}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+.tag.lh{background:#1e3a8a;color:#93c5fd}.tag.dd{background:#065f46;color:#6ee7b7}
+.month-nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.month-nav button{background:#1a2332;color:#e2e8f0;border:1px solid #334155;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px}
+.month-nav button.active{background:#1e3a8a;border-color:#3b82f6;color:#fff}
+.meta{color:#94a3b8;font-size:12px;margin-bottom:8px}
+a{color:#3b82f6;text-decoration:none}
+@media(max-width:767px){body{padding:12px}.kpi .box{min-width:130px}th,td{font-size:12px;padding:6px 8px}}
+</style></head><body>
+<h1>📋 月度活动计划（腾讯文档在线表）</h1>
+<div class="meta" id="meta">加载中…</div>
+<div class="kpi" id="kpi"></div>
+<div class="month-nav" id="monthNav"></div>
+<div class="tbl-wrap"><table id="tbl"><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
+<script>
+fetch('data/tencent_plan_detail.json', {cache:'no-store'}).then(r=>r.json()).then(d => {
+  window.D = d;
+  render();
+}).catch(e => {
+  document.getElementById('meta').textContent = '⚠️ 数据加载失败: ' + e.message;
+});
+
+let curMonth = null;
+
+function render() {
+  const d = window.D;
+  document.getElementById('meta').textContent =
+    `数据来源：腾讯文档在线表 · 更新于 ${d.generated} · <a href="${d.url}" target="_blank">打开原表 ↗</a>`;
+  document.getElementById('meta').innerHTML = document.getElementById('meta').textContent;
+
+  // KPI 卡
+  const s = d.summary;
+  document.getElementById('kpi').innerHTML = `
+    <div class="box"><div class="v">${s.total} 个</div><div class="k">${d.month}月项目</div></div>
+    <div class="box"><div class="v">${s.lianhe} 个</div><div class="k">联合活动</div></div>
+    <div class="box"><div class="v">${s.dandian} 个</div><div class="k">单店活动</div></div>
+    <div class="box"><div class="v">¥${s.amt.toLocaleString()}</div><div class="k">区域支持金额</div></div>`;
+
+  // 月份导航（从 all_projects 提取有项目的月份）
+  const months = [...new Set(d.all_projects.map(p => p.month))].sort();
+  document.getElementById('monthNav').innerHTML =
+    months.map(m => `<button data-m="${m}" class="${m === d.month ? 'active' : ''}">${parseInt(m)}月</button>`).join('');
+  document.querySelectorAll('.month-nav button').forEach(btn => {
+    btn.onclick = () => { curMonth = btn.dataset.m; renderTable(); document.querySelectorAll('.month-nav button').forEach(b => b.classList.remove('active')); btn.classList.add('active'); };
+  });
+
+  renderTable();
+}
+
+function renderTable() {
+  const d = window.D;
+  const month = curMonth || d.month;
+  const list = (month === d.month ? d.projects : d.all_projects.filter(p => p.month === month))
+    .filter(p => p.month === month);
+
+  document.getElementById('thead').innerHTML = `
+    <tr><th>序号</th><th>活动编号</th><th>类型</th><th>分类</th><th>活动名称</th><th>开始</th><th>结束</th><th style="text-align:right">区域支持金额</th></tr>`;
+
+  document.getElementById('tbody').innerHTML = list.map((p, i) => `
+    <tr>
+      <td>${i+1}</td>
+      <td class="num">${p.num.replace('SAR2-2026', '')}</td>
+      <td><span class="tag ${p.type === '联合活动' ? 'lh' : 'dd'}">${p.type === '联合活动' ? '联合' : '单店'}</span></td>
+      <td>${p.cat}</td>
+      <td>${p.name}</td>
+      <td>${p.sdate}</td>
+      <td>${p.edate}</td>
+      <td class="amt">${p.amt > 0 ? '¥' + p.amt.toLocaleString() : '—'}</td>
+    </tr>`).join('') || '<tr><td colspan="8" style="text-align:center;color:#94a3b8">该月暂无项目</td></tr>';
+}
+</script>
+</body></html>
