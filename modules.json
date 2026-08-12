@@ -21,13 +21,15 @@
       "order": 2
     },
     {
-      "id": "desktop",
-      "title": "桌面文件索引",
-      "icon": "📁",
-      "subtitle": "Desktop + Downloads 文件树",
-      "type": "iframe",
-      "src": "https://jayyangstore.github.io/desktop-index/",
-      "order": 3
+      "id": "tencent-plan",
+      "title": "月度活动计划",
+      "icon": "📋",
+      "subtitle": "docs.qq.com 在线表 · 联合活动主表",
+      "type": "kpi",
+      "data": "data/tencent_plan_kpi.json",
+      "detailUrl": "https://docs.qq.com/sheet/DVGJDQWtXRVR1T2R1",
+      "order": 3,
+      "_note": "WorkBuddy 后台跑时自动从 docs.qq.com 拉 BTL-联合活动 sheet；首次需 WorkBuddy 已 OAuth 授权"
     },
     {
       "id": "lixiang",
