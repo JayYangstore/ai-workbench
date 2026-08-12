@@ -16,7 +16,7 @@
             "icon": "📊",
             "subtitle": "DeepSeek 余额 + MiniMax 5h/周窗 · 实时",
             "type": "kpi",
-            "data": "data/llm_usage_kpi.json",
+            "data": "https://controller-charitable-antiques-looks.trycloudflare.com/workbench/data/llm_usage_kpi.json",
             "detailUrl": "https://controller-charitable-antiques-looks.trycloudflare.com/",
             "order": 2
         },
