@@ -391,18 +391,28 @@ function renderCard(m) {
   return card;
 }
 
+// 归一化数据地址：ngrok 隧道 /workbench/data/xxx.json → 仓库内相对路径 data/xxx.json
+// GitHub Pages 同域 fetch 无 CORS / ngrok 拦截页问题；JSON 由本地脚本生成、cron 推送到仓库，
+// 虽非秒级实时但主界面 KPI 可稳定显示（2026-08-12 修主界面 KPI 不显示）
+// ngrok 免费域名后缀 app/dev/io 均兼容
+function resolveDataUrl(url) {
+  const m = url.match(/^https?:\/\/[^/]+\.ngrok-free\.(?:app|dev|io)\/workbench\/data\/(.+)$/);
+  if (m) return 'data/' + m[1];
+  return url;
+}
+
 async function loadKpiData(m) {
   const h = {'cache': 'no-store'};
-  // ngrok 隧道：加 skip 头避免浏览器拦截页（2026-08-12 修主界面KPI不显示）
-  if (m.data.includes('ngrok-free.app')) h['ngrok-skip-browser-warning'] = '1';
-  const r = await fetch(m.data, h);
+  // ngrok 隧道：加 skip 头避免浏览器拦截页（保留作兜底，主数据源已归一化到仓库内 data/）
+  if (m.data.includes('ngrok-free.')) h['ngrok-skip-browser-warning'] = '1';
+  const r = await fetch(resolveDataUrl(m.data), h);
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return await r.json();
 }
 async function loadIndexData(m) {
   const h = {'cache': 'no-store'};
-  if (m.data.includes('ngrok-free.app')) h['ngrok-skip-browser-warning'] = '1';
-  const r = await fetch(m.data, h);
+  if (m.data.includes('ngrok-free.')) h['ngrok-skip-browser-warning'] = '1';
+  const r = await fetch(resolveDataUrl(m.data), h);
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return await r.json();
 }
