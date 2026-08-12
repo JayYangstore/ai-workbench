@@ -2,7 +2,9 @@
 <title>日常报销追踪</title><style>
 body{font-family:-apple-system,'PingFang SC',sans-serif;background:#0a0e14;color:#e2e8f0;margin:0;padding:20px}
 h1{font-size:20px;color:#f1f5f9}h2{font-size:17px;color:#f1f5f9;margin-top:28px}
-table{width:100%;border-collapse:collapse;margin-top:16px;background:#1a2332;border-radius:8px;overflow:hidden}
+.tbl-wrap{height:70vh;overflow-x:auto;overflow-y:auto}
+.table-box{margin-top:16px}
+table{width:100%;border-collapse:collapse;background:#1a2332;border-radius:8px;overflow:hidden}
 th,td{padding:10px 12px;text-align:right;border-bottom:1px solid #334155;font-size:13px}
 thead th{background:#1F4E78;color:#fff;position:sticky;top:0;z-index:20}
 tfoot td{position:sticky;bottom:0;z-index:10;background:#1e3a8a;color:#fff;font-weight:700}
@@ -18,6 +20,7 @@ tr:hover{background:#0f172a}
 <h1>💳 日常报销追踪（团队）</h1>
 
 <h2>📋 个人报销明细</h2>
+<div class="tbl-wrap">
 <table>
 <thead><tr><th>人员</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>合计</th></tr></thead>
 <tbody>
@@ -25,8 +28,10 @@ tr:hover{background:#0f172a}
 </tbody>
 <tfoot><tr><td>月度合计</td><td>¥1,787</td><td>¥3,057</td><td>¥1,585</td><td>¥1,568</td><td>¥7,997</td></tr></tfoot>
 </table>
+</div>
 
 <h2>📊 费用类型分析（按月份）</h2>
+<div class="tbl-wrap">
 <table>
 <thead><tr><th>费用类别</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>合计</th></tr></thead>
 <tbody>
@@ -34,4 +39,5 @@ tr:hover{background:#0f172a}
 </tbody>
 <tfoot><tr><td>合计</td><td>¥1,787</td><td>¥3,057</td><td>¥1,585</td><td>¥1,568</td><td>¥7,997</td></tr></tfoot>
 </table>
+</div>
 </body></html>
