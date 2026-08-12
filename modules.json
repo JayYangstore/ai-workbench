@@ -14,10 +14,10 @@
             "id": "llm-usage",
             "title": "LLM 用量日报",
             "icon": "📊",
-            "subtitle": "DeepSeek 余额 + MiniMax 5h/周窗 · 实时(每次打开)",
+            "subtitle": "DeepSeek 余额 + MiniMax 5h/周窗 · 实时",
             "type": "kpi",
             "data": "data/llm_usage_kpi.json",
-            "detailUrl": "https://app-a01365d5a72e0641.apps.clawling.io/workbench/",
+            "detailUrl": "https://controller-charitable-antiques-looks.trycloudflare.com/",
             "order": 2
         },
         {
