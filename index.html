@@ -87,6 +87,27 @@
 
   /* ============ Card ============ */
   .card {
+    cursor: grab;
+  }
+  .card:active {
+    cursor: grabbing;
+  }
+  .card .head {
+    user-select: none;
+  }
+  .card.dragging {
+    opacity: 0.4;
+  }
+  .card .drag-hint {
+    position: absolute;
+    top: 8px; right: 8px;
+    color: #475569;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .card:hover .drag-hint { opacity: 0.6; }
+  .card {
     background: #1a2332;
     border: 1px solid #334155;
     border-radius: 12px;
@@ -202,6 +223,7 @@
     .card .kpi-grid { gap: 8px; }
   }
 </style>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 </head>
 <body>
 
@@ -285,10 +307,34 @@ async function renderModules() {
     return;
   }
 
-  modules.sort((a, b) => (a.order || 99) - (b.order || 99));
+  // 优先用 localStorage 保存的用户自定义顺序
+  const savedOrder = JSON.parse(localStorage.getItem('ai_workbench_order') || '[]');
+  if (savedOrder.length) {
+    modules.sort((a, b) => {
+      const ai = savedOrder.indexOf(a.id);
+      const bi = savedOrder.indexOf(b.id);
+      return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+    });
+  } else {
+    modules.sort((a, b) => (a.order || 99) - (b.order || 99));
+  }
   grid.innerHTML = '';
   for (const m of modules) {
     grid.appendChild(renderCard(m));
+  }
+  // 初始化拖拽排序
+  if (window.Sortable) {
+    Sortable.create(grid, {
+      animation: 150,
+      handle: '.card',
+      ghostClass: 'dragging',
+      onEnd: function(evt) {
+        // 拖拽后保存新顺序到 localStorage
+        const newOrder = [...grid.children].map(c => c.querySelector('[data-id]')?.dataset.id).filter(Boolean);
+        localStorage.setItem('ai_workbench_order', JSON.stringify(newOrder));
+        console.log('[拖拽] 新顺序已保存:', newOrder);
+      }
+    });
   }
 }
 
