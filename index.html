@@ -392,12 +392,17 @@ function renderCard(m) {
 }
 
 async function loadKpiData(m) {
-  const r = await fetch(m.data, {cache: 'no-store'});
+  const h = {'cache': 'no-store'};
+  // ngrok 隧道：加 skip 头避免浏览器拦截页（2026-08-12 修主界面KPI不显示）
+  if (m.data.includes('ngrok-free.app')) h['ngrok-skip-browser-warning'] = '1';
+  const r = await fetch(m.data, h);
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return await r.json();
 }
 async function loadIndexData(m) {
-  const r = await fetch(m.data, {cache: 'no-store'});
+  const h = {'cache': 'no-store'};
+  if (m.data.includes('ngrok-free.app')) h['ngrok-skip-browser-warning'] = '1';
+  const r = await fetch(m.data, h);
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return await r.json();
 }
