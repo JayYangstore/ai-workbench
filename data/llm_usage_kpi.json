@@ -1,30 +1,30 @@
 {
   "hero": {
-    "value": "¥105.91",
-    "label": "DeepSeek 余额"
+    "value": "53%",
+    "label": "MiniMax 5h 窗口已用",
+    "color": "warn"
   },
   "progress": {
-    "pct": 47.0,
-    "text": "下次更新: 明日 12:00 · 数据更新于 12:01"
+    "pct": 53,
+    "color": "warn",
+    "text": "MiniMax general · 5h 窗口"
   },
   "kpis": [
     {
-      "k": "MiniMax 5h窗",
-      "v": "53%",
-      "color": ""
+      "k": "DeepSeek 余额",
+      "v": "¥105.91"
     },
     {
       "k": "MiniMax 周窗",
-      "v": "0%",
-      "color": ""
+      "v": "16%"
     },
     {
-      "k": "MiniMax video",
+      "k": "video 5h",
       "v": "0%"
     },
     {
       "k": "数据时间",
-      "v": "12:01:03"
+      "v": "2026-08-11 12:01"
     }
   ]
 }
