@@ -8,15 +8,14 @@ h1{font-size:20px;color:#f1f5f9}.kpi{display:flex;gap:16px;flex-wrap:wrap;margin
 table{width:100%;border-collapse:separate;border-spacing:0;margin-top:12px;background:#1a2332;border-radius:8px;overflow:hidden;font-size:13px;min-width:900px}
 th,td{padding:8px 10px;text-align:right;border-bottom:1px solid #334155}
 thead th{background:#1F4E78;color:#fff;font-weight:600;text-align:center;position:sticky;top:0;z-index:20}
-thead tr:nth-child(2) th{top:38px;z-index:2;font-weight:400;color:#dbe7f5;border-top:1px solid #3b6ea5}
 thead th:hover{background:#2b6cb0}
 tfoot td{position:sticky;bottom:0;z-index:1;background:#1e3a8a;color:#fff;font-weight:700}
 td:first-child,th:first-child{text-align:left;position:sticky;left:0;background:inherit}
 tr:hover{background:#0f172a}.grp{color:#dbe7f5;font-size:11px;font-weight:400}
 
-.back-home{position:fixed;top:12px;left:12px;background:#1a2332;color:#e2e8f0;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:13px;border:1px solid #334155;z-index:100;transition:all .15s}
+.back-home{display:inline-block;margin-bottom:14px;background:#1a2332;color:#e2e8f0;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:13px;border:1px solid #334155;transition:all .15s}
 .back-home:hover{background:#1e3a8a;border-color:#3b82f6;color:#fff}
-@media(max-width:767px){.back-home{top:8px;left:8px;padding:6px 10px;font-size:12px}}
+@media(max-width:767px){.back-home{padding:6px 10px;font-size:12px}}
 </style></head><body>
 <a class="back-home" href="./">← 返回主页面</a>
 <h1>📊 奥迪立项月度汇总（2026）</h1>
@@ -30,11 +29,12 @@ tr:hover{background:#0f172a}.grp{color:#dbe7f5;font-size:11px;font-weight:400}
 <table>
 <thead>
 <tr>
-  <th rowspan="2">月份</th>
-  <th colspan="2">市场费用</th><th colspan="2">销售费用</th><th colspan="2">用户运营</th><th colspan="2">小计</th><th rowspan="2">备注</th>
-</tr>
-<tr>
-  <th class="grp">立项金额</th><th class="grp">实际执行</th><th class="grp">立项金额</th><th class="grp">实际执行</th><th class="grp">立项金额</th><th class="grp">实际执行</th><th class="grp">立项金额</th><th class="grp">实际执行</th>
+  <th>月份</th>
+  <th>市场·立项</th><th>市场·执行</th>
+  <th>销售·立项</th><th>销售·执行</th>
+  <th>用户·立项</th><th>用户·执行</th>
+  <th>小计·立项</th><th>小计·执行</th>
+  <th>备注</th>
 </tr>
 </thead>
 <tbody>
