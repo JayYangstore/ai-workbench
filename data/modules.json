@@ -1,0 +1,65 @@
+{
+    "modules": [
+        {
+            "id": "attendance",
+            "title": "考勤 · 剩余加班",
+            "icon": "⏰",
+            "subtitle": "本月扣减 / 周末加班 / 全月余额",
+            "type": "kpi",
+            "data": "data/attendance_kpi.json",
+            "detailUrl": "https://jayyangstore.github.io/attendance-dashboard/",
+            "order": 1
+        },
+        {
+            "id": "llm-usage",
+            "title": "LLM 用量日报",
+            "icon": "📊",
+            "subtitle": "DeepSeek 余额 + MiniMax 5h/周窗 · 实时",
+            "type": "kpi",
+            "data": "https://alone-chowder-wired.ngrok-free.dev/workbench/data/llm_usage_kpi.json",
+            "detailUrl": "https://alone-chowder-wired.ngrok-free.dev/",
+            "order": 2
+        },
+        {
+            "id": "tencent-plan",
+            "title": "月度活动计划",
+            "icon": "📋",
+            "subtitle": "8月计划 · 在线表直读",
+            "type": "kpi",
+            "data": "data/tencent_plan_kpi.json",
+            "detailUrl": "https://jayyangstore.github.io/ai-workbench/tencent_plan.html",
+            "order": 3,
+            "_note": "WorkBuddy 后台跑时自动从 docs.qq.com 拉 BTL-联合活动 sheet；首次需 WorkBuddy 已 OAuth 授权"
+        },
+        {
+            "id": "lixiang",
+            "title": "奥迪 · 立项汇总",
+            "icon": "📊",
+            "subtitle": "2026 立项金额 / 7-9月预算 / 月度明细",
+            "type": "kpi",
+            "data": "data/lixiang_kpi.json",
+            "detailUrl": "https://jayyangstore.github.io/ai-workbench/lixiang.html",
+            "order": 4
+        },
+        {
+            "id": "baoxiao",
+            "title": "奥迪 · 报销追踪",
+            "icon": "💳",
+            "subtitle": "团队月度报销 / 个人合计",
+            "type": "kpi",
+            "data": "data/baoxiao_kpi.json",
+            "detailUrl": "https://jayyangstore.github.io/ai-workbench/baoxiao.html",
+            "order": 5
+        },
+        {
+            "id": "quyu",
+            "title": "奥迪 · 区域费用明细",
+            "icon": "💰",
+            "subtitle": "客户报销 / 报价 / 成本对照",
+            "type": "kpi",
+            "data": "data/quyu_kpi.json",
+            "detailUrl": "https://jayyangstore.github.io/ai-workbench/quyu.html",
+            "order": 6
+        }
+    ]
+}
