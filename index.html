@@ -391,13 +391,11 @@ function renderCard(m) {
   return card;
 }
 
-// 归一化数据地址：ngrok 隧道 /workbench/data/xxx.json → 仓库内相对路径 data/xxx.json
-// GitHub Pages 同域 fetch 无 CORS / ngrok 拦截页问题；JSON 由本地脚本生成、cron 推送到仓库，
-// 虽非秒级实时但主界面 KPI 可稳定显示（2026-08-12 修主界面 KPI 不显示）
-// ngrok 免费域名后缀 app/dev/io 均兼容
+// 2026-08-14 改造：resolveDataUrl 已废弃——之前把 ngrok URL 重写成相对路径是为了让
+// 主页走 Pages 同域 fetch，但这样 ngrok 端实时数据永远到不了主页。
+// 现状：用量 KPI 主动切 ngrok 实时，CORS 已在 server.mjs L73-75 配置 *，fetch headers
+// 加 ngrok-skip-browser-warning 绕过拦截页。直接返回原 URL。
 function resolveDataUrl(url) {
-  const m = url.match(/^https?:\/\/[^/]+\.ngrok-free\.(?:app|dev|io)\/workbench\/data\/(.+)$/);
-  if (m) return 'data/' + m[1];
   return url;
 }
 
