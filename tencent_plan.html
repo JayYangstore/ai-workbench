@@ -33,7 +33,7 @@ a{color:#3b82f6;text-decoration:none}
 <div style="position:fixed;top:12px;right:12px;z-index:9999">
   <button id="refresh-btn" onclick="refreshDetail()" title="刷新本页"
     style="display:inline-block;background:#1a2332;color:#e2e8f0;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:13px;border:1px solid #334155;transition:all .15s;cursor:pointer;font-family:inherit">🔄 刷新</button>
-  <span id="refresh-status" style="margin-left:8px;background:#1a2332;color:#94a3b8;border:1px solid #29303d;border-radius:8px;padding:6px 10px;font-size:12px"></span>
+  <span id="refresh-status" style="display:none;margin-left:8px;background:#1a2332;color:#94a3b8;border:1px solid #29303d;border-radius:8px;padding:6px 10px;font-size:12px"></span>
 </div>
 <script>
 const PAGE_KEY = 'tencent_plan';
@@ -41,12 +41,12 @@ async function refreshDetail(){
   const btn = document.getElementById('refresh-btn');
   const st = document.getElementById('refresh-status');
   if (btn) { btn.disabled = true; btn.textContent = '⏳'; }
-  if (st) st.textContent = '正在刷新...';
+  if (st) { st.style.display = 'inline-block'; st.textContent = '正在刷新...'; }
   const host = window.location.host;
   const isNgrok = host.includes('ngrok');
   const isPages = host.includes('github.io');
   if (isPages) {
-    if (st) st.textContent = '⚠️ Pages 静态,只显示最近快照';
+    if (st) { st.style.display = 'inline-block'; st.textContent = '⚠️ Pages 静态,只显示最近快照'; }
     alert('你正在 Pages 入口 (jayyangstore.github.io)\n\nPages 是静态托管,不能实时刷新.\n\n如需实时刷新请去 ngrok 入口:\nhttps://alone-chowder-wired.ngrok-free.dev/workbench/\n\n点确定后刷新当前页(只显示最近一次 build 快照)');
     setTimeout(() => location.reload(), 1000);
     return;
@@ -56,10 +56,10 @@ async function refreshDetail(){
       const r = await fetch('/__refresh_detail?page=' + PAGE_KEY, {cache:'no-store'});
       if (!r.ok) throw new Error('HTTP ' + r.status);
       const t = await r.text();
-      if (st) st.textContent = '✅ ' + t.split('\n').join(' | ');
+      if (st) { st.style.display = 'inline-block'; st.textContent = '✅ ' + t.split('\n').join(' | '); }
       setTimeout(() => location.reload(), 800);
     } catch(e) {
-      if (st) st.textContent = '❌ ' + e.message;
+      if (st) { st.style.display = 'inline-block'; st.textContent = '❌ ' + e.message; }
       if (btn) { btn.disabled = false; btn.textContent = '🔄 刷新'; }
       alert('刷新失败: ' + e.message);
     }
@@ -100,12 +100,8 @@ function render() {
     <div class="box"><div class="v">${dd} 个</div><div class="k">单店活动</div></div>
     <div class="box"><div class="v">¥${amt.toLocaleString()}</div><div class="k">总金额</div></div>`;
   }
-  const s = D.summary;
-  document.getElementById('kpi').innerHTML = `
-    <div class="box"><div class="v">${s.total} 个</div><div class="k">${D.month}月项目</div></div>
-    <div class="box"><div class="v">${s.lianhe} 个</div><div class="k">联合活动</div></div>
-    <div class="box"><div class="v">${s.dandian} 个</div><div class="k">单店活动</div></div>
-    <div class="box"><div class="v">¥${s.amt.toLocaleString()}</div><div class="k">区域支持金额</div></div>`;
+  // 初始加载: 默认全部月份
+  renderKpi(D.all_projects);
 
   const months = [...new Set(D.all_projects.map(p => p.month))].sort();
   document.getElementById('monthNav').innerHTML =
