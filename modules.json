@@ -16,7 +16,7 @@
             "icon": "📊",
             "subtitle": "DeepSeek 余额 + MiniMax 5h/周窗 · 实时",
             "type": "kpi",
-            "data": "data/llm_usage_kpi.json",
+            "data": "https://alone-chowder-wired.ngrok-free.dev/workbench/data/llm_usage_kpi.json",
             "detailUrl": "https://alone-chowder-wired.ngrok-free.dev/",
             "order": 2
         },
