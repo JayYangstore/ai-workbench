@@ -27,7 +27,7 @@
       "subtitle": "8月计划 · 在线表直读",
       "type": "kpi",
       "data": "data/tencent_plan_kpi.json",
-      "detailUrl": "https://jayyangstore.github.io/ai-workbench/tencent_plan.html",
+      "detailUrl": "https://alone-chowder-wired.ngrok-free.dev/workbench/tencent_plan.html",
       "order": 3,
       "_note": "WorkBuddy 后台跑时自动从 docs.qq.com 拉 BTL-联合活动 sheet；首次需 WorkBuddy 已 OAuth 授权"
     },
@@ -38,7 +38,7 @@
       "subtitle": "2026 立项金额 / 7-9月预算 / 月度明细",
       "type": "kpi",
       "data": "data/lixiang_kpi.json",
-      "detailUrl": "https://jayyangstore.github.io/ai-workbench/lixiang.html",
+      "detailUrl": "https://alone-chowder-wired.ngrok-free.dev/workbench/lixiang.html",
       "order": 4
     },
     {
@@ -48,7 +48,7 @@
       "subtitle": "团队月度报销 / 个人合计",
       "type": "kpi",
       "data": "data/baoxiao_kpi.json",
-      "detailUrl": "https://jayyangstore.github.io/ai-workbench/baoxiao.html",
+      "detailUrl": "https://alone-chowder-wired.ngrok-free.dev/workbench/baoxiao.html",
       "order": 5
     },
     {
@@ -58,7 +58,7 @@
       "subtitle": "客户报销 / 报价 / 成本对照",
       "type": "kpi",
       "data": "data/quyu_kpi.json",
-      "detailUrl": "https://jayyangstore.github.io/ai-workbench/quyu.html",
+      "detailUrl": "https://alone-chowder-wired.ngrok-free.dev/workbench/quyu.html",
       "order": 6
     }
   ]
