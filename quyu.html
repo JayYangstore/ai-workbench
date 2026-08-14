@@ -14,31 +14,29 @@ tr:hover{background:#0f172a}
 .back-home{display:inline-block;margin-bottom:14px;background:#1a2332;color:#e2e8f0;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:13px;border:1px solid #334155;transition:all .15s}
 .back-home:hover{background:#1e3a8a;border-color:#3b82f6;color:#fff}
 @media(max-width:767px){.back-home{padding:6px 10px;font-size:12px}}
-</style></head><body><!-- 2026-08-14 老板要求: 右上角 fixed, 不挡 KPI 内容 -->
-<div id="refresh-bar" style="position:fixed;top:8px;right:8px;z-index:9999;display:flex;gap:8px">
-  <button id="refresh-btn" onclick="refreshDetail()" title="刷新本页" style="background:#1e3a8a;color:#fff;border:1px solid #3b82f6;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px;font-weight:600">🔄 刷新</button>
-  <span id="refresh-status" style="background:#1a2332;color:#94a3b8;border:1px solid #29303d;border-radius:6px;padding:6px 14px;font-size:12px"></span>
+</style></head><body><!-- 🔄 刷新按钮: 与返回主页面 .back-home 同风格 (2026-08-14 老板要求统一) -->
+<div style="position:fixed;top:12px;right:12px;z-index:9999">
+  <button id="refresh-btn" onclick="refreshDetail()" title="刷新本页"
+    style="display:inline-block;background:#1a2332;color:#e2e8f0;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:13px;border:1px solid #334155;transition:all .15s;cursor:pointer;font-family:inherit">🔄 刷新</button>
+  <span id="refresh-status" style="margin-left:8px;background:#1a2332;color:#94a3b8;border:1px solid #29303d;border-radius:8px;padding:6px 10px;font-size:12px"></span>
 </div>
 <script>
 const PAGE_KEY = 'quyu';
 async function refreshDetail(){
   const btn = document.getElementById('refresh-btn');
   const st = document.getElementById('refresh-status');
-  if (btn) { btn.disabled = true; btn.textContent = '⏳ 刷新中...'; }
+  if (btn) { btn.disabled = true; btn.textContent = '⏳'; }
   if (st) st.textContent = '正在刷新...';
-  // 关键: 检测当前 host
   const host = window.location.host;
   const isNgrok = host.includes('ngrok');
   const isPages = host.includes('github.io');
   if (isPages) {
-    // Pages 静态入口: 不能触发 server.mjs, 只能 reload 拉最新文件
-    if (st) st.textContent = '⚠️ Pages 入口不支持实时刷新,只能看到上次推的快照';
-    alert('你正在 Pages 入口 (jayyangstore.github.io)\n\nPages 是静态托管,没有 /__refresh_detail 路由.\n\n如需实时刷新,请去 ngrok 入口:\nhttps://alone-chowder-wired.ngrok-free.dev/workbench/\n\n点"确定"后会刷新当前页面(只能看到最近一次 build 推的快照)');
+    if (st) st.textContent = '⚠️ Pages 静态,只显示最近快照';
+    alert('你正在 Pages 入口 (jayyangstore.github.io)\n\nPages 是静态托管,不能实时刷新.\n\n如需实时刷新请去 ngrok 入口:\nhttps://alone-chowder-wired.ngrok-free.dev/workbench/\n\n点确定后刷新当前页(只显示最近一次 build 快照)');
     setTimeout(() => location.reload(), 1000);
     return;
   }
   if (isNgrok) {
-    // ngrok 同源, 触发 server.mjs /__refresh_detail
     try {
       const r = await fetch('/__refresh_detail?page=' + PAGE_KEY, {cache:'no-store'});
       if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -52,8 +50,7 @@ async function refreshDetail(){
     }
   }
 }
-</script>
-<a class="back-home" href="./">← 返回主页面</a>
+</script><a class="back-home" href="./">← 返回主页面</a>
 <h1>💰 区域费用明细（3-6月）</h1><div class="kpi">
   <div class="box"><div class="v">¥544,824</div><div class="k">预留费用</div></div>
   <div class="box"><div class="v">¥388,246</div><div class="k">已使用</div></div>
