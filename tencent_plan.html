@@ -29,37 +29,47 @@ a{color:#3b82f6;text-decoration:none}
 .back-home{display:inline-block;margin-bottom:14px;background:#1a2332;color:#e2e8f0;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:13px;border:1px solid #334155;transition:all .15s}
 .back-home:hover{background:#1e3a8a;border-color:#3b82f6;color:#fff}
 @media(max-width:767px){.back-home{padding:6px 10px;font-size:12px}}
-</style></head><body>
-<a class="back-home" href="./">← 返回主页面</a>
-<h1>📋 月度活动计划（腾讯文档在线表）</h1><button class="refresh-btn" onclick="refreshDetail()" title="刷新本页">🔄</button>
-<style>
-  .refresh-btn{
-    float:right;
-    background:#1e3a8a;color:#fff;border:1px solid #3b82f6;
-    border-radius:6px;padding:6px 14px;cursor:pointer;font-size:14px;
-    margin-left:10px;
-  }
-  .refresh-btn:hover{background:#3b82f6}
-  .refresh-btn:disabled{background:#666;cursor:wait}
-</style>
+</style></head><body><!-- 2026-08-14 老板要求: 右上角 fixed, 不挡 KPI 内容 -->
+<div id="refresh-bar" style="position:fixed;top:8px;right:8px;z-index:9999;display:flex;gap:8px">
+  <button id="refresh-btn" onclick="refreshDetail()" title="刷新本页" style="background:#1e3a8a;color:#fff;border:1px solid #3b82f6;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px;font-weight:600">🔄 刷新</button>
+  <span id="refresh-status" style="background:#1a2332;color:#94a3b8;border:1px solid #29303d;border-radius:6px;padding:6px 14px;font-size:12px"></span>
+</div>
 <script>
+const PAGE_KEY = 'tencent_plan';
 async function refreshDetail(){
-  const btn = document.querySelector('.refresh-btn');
-  if (btn) { btn.disabled = true; btn.textContent = '⏳'; }
-  try {
-    // 通知 server.mjs 现场重算本看板
-    const r = await fetch('/__refresh_detail?page=tencent_plan', {cache:'no-store'});
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    const t = await r.text();
-    alert('已刷新:\n' + t);
-    location.reload();
-  } catch(e) {
-    alert('刷新失败: ' + e.message);
-    if (btn) { btn.disabled = false; btn.textContent = '🔄'; }
+  const btn = document.getElementById('refresh-btn');
+  const st = document.getElementById('refresh-status');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ 刷新中...'; }
+  if (st) st.textContent = '正在刷新...';
+  // 关键: 检测当前 host
+  const host = window.location.host;
+  const isNgrok = host.includes('ngrok');
+  const isPages = host.includes('github.io');
+  if (isPages) {
+    // Pages 静态入口: 不能触发 server.mjs, 只能 reload 拉最新文件
+    if (st) st.textContent = '⚠️ Pages 入口不支持实时刷新,只能看到上次推的快照';
+    alert('你正在 Pages 入口 (jayyangstore.github.io)\n\nPages 是静态托管,没有 /__refresh_detail 路由.\n\n如需实时刷新,请去 ngrok 入口:\nhttps://alone-chowder-wired.ngrok-free.dev/workbench/\n\n点"确定"后会刷新当前页面(只能看到最近一次 build 推的快照)');
+    setTimeout(() => location.reload(), 1000);
+    return;
+  }
+  if (isNgrok) {
+    // ngrok 同源, 触发 server.mjs /__refresh_detail
+    try {
+      const r = await fetch('/__refresh_detail?page=' + PAGE_KEY, {cache:'no-store'});
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const t = await r.text();
+      if (st) st.textContent = '✅ ' + t.split('\n').join(' | ');
+      setTimeout(() => location.reload(), 800);
+    } catch(e) {
+      if (st) st.textContent = '❌ ' + e.message;
+      if (btn) { btn.disabled = false; btn.textContent = '🔄 刷新'; }
+      alert('刷新失败: ' + e.message);
+    }
   }
 }
 </script>
-<div class="meta" id="meta">加载中…</div>
+<a class="back-home" href="./">← 返回主页面</a>
+<h1>📋 月度活动计划（腾讯文档在线表）</h1><div class="meta" id="meta">加载中…</div>
 <div class="kpi" id="kpi"></div>
 <div class="month-nav" id="monthNav"></div>
 <div class="filters" id="filters"></div>
