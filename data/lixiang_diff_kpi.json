@@ -1,0 +1,26 @@
+{
+  "hero": "2",
+  "hero_label": "08月待催立项",
+  "cards": [
+    {
+      "label": "待催立项",
+      "value": "2",
+      "unit": "个"
+    },
+    {
+      "label": "已推迟",
+      "value": "1",
+      "unit": "个"
+    },
+    {
+      "label": "最紧急",
+      "value": "019",
+      "unit": ""
+    }
+  ],
+  "progress": {
+    "text": "生成于 2026-08-16 00:13",
+    "percent": null
+  },
+  "updated_at": "2026-08-16 00:13"
+}
