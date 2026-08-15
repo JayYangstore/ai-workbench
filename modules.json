@@ -60,6 +60,17 @@
       "data": "data/quyu_kpi.json",
       "detailUrl": "https://alone-chowder-wired.ngrok-free.dev/workbench/quyu.html",
       "order": 6
+    },
+    {
+      "id": "lixiang-diff",
+      "title": "奥迪 · 立项催办",
+      "icon": "⏳",
+      "subtitle": "8月待催立项 / 腾讯表全字段",
+      "type": "kpi",
+      "data": "data/lixiang_diff_kpi.json",
+      "detailUrl": "https://alone-chowder-wired.ngrok-free.dev/workbench/lixiang_diff.html",
+      "order": 7,
+      "_note": "腾讯表 vs 立项汇总表差异监控；每天 cron 跑 audi_lixiang_diff.py 更新"
     }
   ]
 }
