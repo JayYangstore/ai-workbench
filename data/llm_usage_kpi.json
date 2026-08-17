@@ -1,27 +1,27 @@
 {
   "hero": {
-    "value": "100%",
-    "label": "MiniMax 5h 窗口已用 100%",
-    "color": "danger"
+    "value": "61%",
+    "label": "MiniMax 5h 窗口已用 61%",
+    "color": "warn"
   },
   "progress": {
-    "pct": 100,
-    "text": "DeepSeek 余额 ¥65.90 · MiniMax 周 100%"
+    "pct": 61,
+    "text": "DeepSeek 余额 ¥64.59 · MiniMax 周 5%"
   },
   "kpis": [
     {
       "k": "DeepSeek 余额",
-      "v": "¥65.90",
+      "v": "¥64.59",
       "color": "pos"
     },
     {
       "k": "MiniMax 周窗",
-      "v": "100%",
-      "color": "warn"
+      "v": "5%",
+      "color": "pos"
     },
     {
       "k": "AMD 日额度",
-      "v": "12.9%",
+      "v": "3.2%",
       "color": "pos"
     },
     {
@@ -31,7 +31,7 @@
     },
     {
       "k": "数据时间",
-      "v": "2026-08-16 12:01:03",
+      "v": "2026-08-17 12:01:03",
       "color": "neutral"
     }
   ]
