@@ -16,6 +16,7 @@ tfoot td{position:-webkit-sticky;position:sticky;bottom:0;z-index:15;background:
 tr:hover{background:#0f172a}
 .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
 .tag.lh{background:#1e3a8a;color:#93c5fd}.tag.dd{background:#065f46;color:#6ee7b7}
+.tag.dpc{background:#7c2d12;color:#fdba74}
 .month-nav{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
 .month-nav button{background:#1a2332;color:#e2e8f0;border:1px solid #334155;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px}
 .month-nav button.active{background:#1e3a8a;border-color:#3b82f6;color:#fff}
@@ -41,6 +42,7 @@ a{color:#3b82f6;text-decoration:none}
 function renderKpi(list) {
   const lh = list.filter(p => p.type === '联合活动').length;
   const dd = list.filter(p => p.type === '单店活动').length;
+  const dpc = list.filter(p => p.type === '大篷车').length;
   const amt = list.reduce((a, p) => a + (p.amt || 0), 0);
   const m = (typeof filters !== 'undefined' && filters.month) || 'all';
   const cur = m === 'all' ? '全部' : (m + '月');
@@ -48,6 +50,7 @@ function renderKpi(list) {
     <div class="box"><div class="v">${list.length} 个</div><div class="k">${cur}项目</div></div>
     <div class="box"><div class="v">${lh} 个</div><div class="k">联合活动</div></div>
     <div class="box"><div class="v">${dd} 个</div><div class="k">单店活动</div></div>
+    <div class="box"><div class="v">${dpc} 个</div><div class="k">大篷车</div></div>
     <div class="box"><div class="v">¥${amt.toLocaleString()}</div><div class="k">总金额</div></div>`;
 }
 
@@ -184,7 +187,7 @@ function renderTable() {
     <tr>
       <td>${i+1}</td>
       <td class="num">${p.num.replace('SAR2-2026', '')}</td>
-      <td><span class="tag ${p.type === '联合活动' ? 'lh' : 'dd'}">${p.type === '联合活动' ? '联合' : '单店'}</span></td>
+      <td><span class="tag ${p.type === '联合活动' ? 'lh' : (p.type === '大篷车' ? 'dpc' : 'dd')}">${p.type === '联合活动' ? '联合' : (p.type === '大篷车' ? '大篷车' : '单店')}</span></td>
       <td>${p.cat}</td>
       <td>${p.name}</td>
       <td>${p.sdate}</td>
