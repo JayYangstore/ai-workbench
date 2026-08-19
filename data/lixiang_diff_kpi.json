@@ -1,17 +1,17 @@
 {
   "hero": {
-    "value": "7",
+    "value": "8",
     "label": "08月待催立项"
   },
   "progress": {
-    "text": "生成于 2026-08-19 11:37",
+    "text": "生成于 2026-08-19 11:46",
     "percent": null,
     "color": ""
   },
   "kpis": [
     {
       "k": "待催立项",
-      "v": "7",
+      "v": "8",
       "unit": "个",
       "color": "danger"
     },
@@ -28,5 +28,5 @@
       "color": "warn"
     }
   ],
-  "updated_at": "2026-08-19 11:37"
+  "updated_at": "2026-08-19 11:46"
 }
