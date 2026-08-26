@@ -6,17 +6,17 @@
   },
   "progress": {
     "pct": 14,
-    "text": "DeepSeek 余额 ¥24.40 · MiniMax 周 8%"
+    "text": "DeepSeek 余额 ¥110.14 · MiniMax 周 14%"
   },
   "kpis": [
     {
       "k": "DeepSeek 余额",
-      "v": "¥24.40",
-      "color": "warn"
+      "v": "¥110.14",
+      "color": "pos"
     },
     {
       "k": "MiniMax 周窗",
-      "v": "8%",
+      "v": "14%",
       "color": "pos"
     },
     {
@@ -31,7 +31,7 @@
     },
     {
       "k": "数据时间",
-      "v": "2026-08-25 12:00:40",
+      "v": "2026-08-26 12:00:23",
       "color": "neutral"
     }
   ]
