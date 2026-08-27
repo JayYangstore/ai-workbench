@@ -1,22 +1,22 @@
 {
   "hero": {
-    "value": "14%",
-    "label": "MiniMax 5h 窗口已用 14%",
+    "value": "20%",
+    "label": "MiniMax 5h 窗口已用 20%",
     "color": "pos"
   },
   "progress": {
-    "pct": 14,
-    "text": "DeepSeek 余额 ¥110.14 · MiniMax 周 14%"
+    "pct": 20,
+    "text": "DeepSeek 余额 ¥95.13 · MiniMax 周 20%"
   },
   "kpis": [
     {
       "k": "DeepSeek 余额",
-      "v": "¥110.14",
+      "v": "¥95.13",
       "color": "pos"
     },
     {
       "k": "MiniMax 周窗",
-      "v": "14%",
+      "v": "20%",
       "color": "pos"
     },
     {
@@ -31,7 +31,7 @@
     },
     {
       "k": "数据时间",
-      "v": "2026-08-26 12:00:23",
+      "v": "2026-08-27 12:00:51",
       "color": "neutral"
     }
   ]
