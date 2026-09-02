@@ -5,9 +5,9 @@
   },
   "progress": {
     "pct": 100,
-    "text": "¥0"
+    "text": "数据已冻结 1 天，请检查 WorkBuddy 端口"
   },
-  "data_stale": false,
+  "data_stale": true,
   "kpis": [
     {
       "k": "联合活动",
@@ -28,6 +28,12 @@
       "k": "截止日期",
       "v": "2026-09-02",
       "color": "neutral"
+    },
+    {
+      "k": "数据状态",
+      "v": "冻结 1 天",
+      "color": "warn"
     }
-  ]
+  ],
+  "stale_reason": "WorkBuddy connector-proxy 未发现"
 }
