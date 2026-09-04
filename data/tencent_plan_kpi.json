@@ -5,7 +5,7 @@
   },
   "progress": {
     "pct": 100,
-    "text": "数据已冻结 2 天，请检查 WorkBuddy 端口"
+    "text": "数据已冻结 3 天，请检查 WorkBuddy 端口"
   },
   "data_stale": true,
   "kpis": [
@@ -31,7 +31,7 @@
     },
     {
       "k": "数据状态",
-      "v": "冻结 2 天",
+      "v": "冻结 3 天",
       "color": "warn"
     }
   ],
