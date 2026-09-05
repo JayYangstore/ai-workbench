@@ -1,17 +1,17 @@
 {
   "hero": {
-    "value": "2",
+    "value": "3",
     "label": "09月待催立项"
   },
   "progress": {
-    "text": "生成于 2026-09-02 08:30",
+    "text": "⚠️ WorkBuddy 不可用,看板已冻1天 · 启动 WorkBuddy 后从 cron 自动恢复",
     "percent": null,
-    "color": ""
+    "color": "danger"
   },
   "kpis": [
     {
       "k": "待催立项",
-      "v": "2",
+      "v": "3",
       "unit": "个",
       "color": "danger"
     },
@@ -23,10 +23,11 @@
     },
     {
       "k": "最紧急",
-      "v": "郴州站",
+      "v": "厦门站",
       "unit": "",
       "color": "warn"
     }
   ],
-  "updated_at": "2026-09-02 08:30"
+  "updated_at": "2026-09-04 17:12",
+  "data_source": "unavailable"
 }
