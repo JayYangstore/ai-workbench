@@ -5,7 +5,7 @@
   },
   "progress": {
     "pct": 100,
-    "text": "数据已冻结 5 天，请检查 WorkBuddy 端口"
+    "text": "数据已冻结 6 天，请检查 WorkBuddy 端口"
   },
   "data_stale": true,
   "kpis": [
@@ -31,9 +31,9 @@
     },
     {
       "k": "数据状态",
-      "v": "冻结 5 天",
+      "v": "冻结 6 天",
       "color": "warn"
     }
   ],
-  "stale_reason": "WorkBuddy connector-proxy 未发现"
+  "stale_reason": "token 获取失败 HTTP Error 404: Not Found"
 }
