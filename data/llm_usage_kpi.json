@@ -1,12 +1,12 @@
 {
   "hero": {
-    "value": "79%",
-    "label": "MiniMax 5h 窗口已用 79%",
-    "color": "warn"
+    "value": "92%",
+    "label": "LLM 套餐 max 已用 92%",
+    "color": "danger"
   },
   "progress": {
-    "pct": 79,
-    "text": "DeepSeek 余额 ¥69.19 · MiniMax 周 6%"
+    "pct": 92,
+    "text": "DS ¥69.19 · MM周7% · 智谱5h1%/周1%"
   },
   "kpis": [
     {
@@ -16,7 +16,17 @@
     },
     {
       "k": "MiniMax 周窗",
-      "v": "6%",
+      "v": "7%",
+      "color": "pos"
+    },
+    {
+      "k": "智谱 5h",
+      "v": "1%",
+      "color": "pos"
+    },
+    {
+      "k": "智谱 周窗",
+      "v": "1%",
       "color": "pos"
     },
     {
@@ -31,7 +41,7 @@
     },
     {
       "k": "数据时间",
-      "v": "2026-09-08 12:01:59",
+      "v": "2026-09-08 12:10:24",
       "color": "neutral"
     }
   ]
