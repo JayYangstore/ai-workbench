@@ -11,7 +11,7 @@ tfoot td{position:-webkit-sticky;position:sticky;bottom:0;z-index:10;background:
 td:first-child,th:first-child{text-align:left}
 tr:hover{background:#0f172a}
 .hl{background:#10b98120;font-weight:700}
-
+.sub{color:#94a3b8;font-size:12px;margin:6px 0 0}
 .back-home{display:inline-block;margin-bottom:14px;background:#1a2332;color:#e2e8f0;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:13px;border:1px solid #334155;transition:all .15s}
 .back-home:hover{background:#1e3a8a;border-color:#3b82f6;color:#fff}
 @media(max-width:767px){.back-home{padding:6px 10px;font-size:12px}}
@@ -29,7 +29,6 @@ async function refreshDetail(){
   if (btn) { btn.disabled = true; btn.textContent = '⏳'; }
   if (st) { st.style.display = 'inline-block'; st.textContent = '正在刷新...'; }
   const host = window.location.host;
-  const isNgrok = host.includes('ngrok');
   const isPages = host.includes('github.io');
   if (isPages) {
     if (st) { st.style.display = 'inline-block'; st.textContent = '⚠️ Pages 静态,只显示最近快照'; }
@@ -37,40 +36,76 @@ async function refreshDetail(){
     setTimeout(() => location.reload(), 1000);
     return;
   }
-  if (isNgrok) {
-    try {
-      const r = await fetch('/__refresh_detail?page=' + PAGE_KEY, {cache:'no-store'});
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      const t = await r.text();
-      if (st) { st.style.display = 'inline-block'; st.textContent = '✅ ' + t.split('\n').join(' | '); }
-      setTimeout(() => location.reload(), 800);
-    } catch(e) {
-      if (st) { st.style.display = 'inline-block'; st.textContent = '❌ ' + e.message; }
-      if (btn) { btn.disabled = false; btn.textContent = '🔄 刷新'; }
-      alert('刷新失败: ' + e.message);
-    }
+  try {
+    const r = await fetch('/__refresh_detail?page=' + PAGE_KEY, {cache:'no-store'});
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const t = await r.text();
+    if (st) { st.style.display = 'inline-block'; st.textContent = '✅ ' + t.split('\n').join(' | '); }
+    setTimeout(() => location.reload(), 800);
+  } catch(e) {
+    if (st) { st.style.display = 'inline-block'; st.textContent = '❌ ' + e.message; }
+    if (btn) { btn.disabled = false; btn.textContent = '🔄 刷新'; }
+    alert('刷新失败: ' + e.message);
   }
 }
-</script><a class="back-home" href="./">← 返回主页面</a>
-<h1>💳 日常报销追踪（团队）</h1><h2>📋 个人报销明细</h2>
+</script><a class="back-home" href="workbench-v2.html">← 返回主页面</a>
+<h1>💳 日常报销追踪（团队）</h1>
+<p class="sub">数据源：报销追踪表_v2_2026-09-09.xlsx · 生成 2026-09-09 16:44 · 共 21 人 · 总计 ¥8,233.36</p>
+<h2>📋 个人报销明细</h2>
 <div class="tbl-wrap">
 <table>
-<thead><tr><th>人员</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>合计</th></tr></thead>
+<thead><tr><th>人员</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>8月</th><th>合计</th></tr></thead>
 <tbody>
-<tr><td>黄东伟</td><td>¥0</td><td>¥127</td><td>¥769</td><td>¥992</td><td>¥1,889</td></tr><tr><td>黄智光</td><td>¥877</td><td>¥105</td><td>¥0</td><td>¥195</td><td>¥1,178</td></tr><tr class='hl'><td>杨杰</td><td>¥135</td><td>¥806</td><td>¥147</td><td>¥0</td><td>¥1,088</td></tr><tr><td>郭凤娴</td><td>¥0</td><td>¥779</td><td>¥68</td><td>¥0</td><td>¥847</td></tr><tr><td>刘树钟</td><td>¥0</td><td>¥294</td><td>¥252</td><td>¥171</td><td>¥718</td></tr><tr><td>李文宝</td><td>¥0</td><td>¥567</td><td>¥0</td><td>¥0</td><td>¥567</td></tr><tr><td>柳茜</td><td>¥392</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥392</td></tr><tr><td>吴雄洁</td><td>¥0</td><td>¥248</td><td>¥0</td><td>¥0</td><td>¥248</td></tr><tr><td>张志伟</td><td>¥233</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥233</td></tr><tr><td>万超</td><td>¥0</td><td>¥15</td><td>¥141</td><td>¥53</td><td>¥210</td></tr><tr><td>区剑帆</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥156</td><td>¥156</td></tr><tr><td>刘禹华</td><td>¥99</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥99</td></tr><tr><td>张心丁</td><td>¥0</td><td>¥0</td><td>¥81</td><td>¥0</td><td>¥81</td></tr><tr><td>陈洋洋</td><td>¥0</td><td>¥70</td><td>¥0</td><td>¥0</td><td>¥70</td></tr><tr><td>刘碧莎</td><td>¥26</td><td>¥15</td><td>¥27</td><td>¥0</td><td>¥68</td></tr><tr><td>钟敏捷</td><td>¥0</td><td>¥0</td><td>¥44</td><td>¥0</td><td>¥44</td></tr><tr><td>李健豪</td><td>¥0</td><td>¥0</td><td>¥31</td><td>¥0</td><td>¥31</td></tr><tr><td>植慧贤</td><td>¥0</td><td>¥30</td><td>¥0</td><td>¥0</td><td>¥30</td></tr><tr><td>马继就</td><td>¥25</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥25</td></tr><tr><td>郭莹莹</td><td>¥0</td><td>¥0</td><td>¥24</td><td>¥0</td><td>¥24</td></tr>
+<tr><td>万超</td><td>¥0</td><td>¥15</td><td>¥141.48</td><td>¥53.15</td><td>¥0</td><td>¥209.63</td></tr>
+<tr><td>刘树钟</td><td>¥0</td><td>¥294.30</td><td>¥252.17</td><td>¥171.14</td><td>¥0</td><td>¥717.61</td></tr>
+<tr><td>刘碧莎</td><td>¥25.90</td><td>¥15</td><td>¥26.80</td><td>¥0</td><td>¥0</td><td>¥67.70</td></tr>
+<tr><td>刘禹华</td><td>¥98.79</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥98.79</td></tr>
+<tr><td>区剑帆</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥156.41</td><td>¥0</td><td>¥156.41</td></tr>
+<tr><td>吴雄洁</td><td>¥0</td><td>¥248.40</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥248.40</td></tr>
+<tr><td>张心丁</td><td>¥0</td><td>¥0</td><td>¥80.74</td><td>¥0</td><td>¥0</td><td>¥80.74</td></tr>
+<tr><td>张志伟</td><td>¥232.83</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥232.83</td></tr>
+<tr><td>李健豪</td><td>¥0</td><td>¥0</td><td>¥31.40</td><td>¥0</td><td>¥0</td><td>¥31.40</td></tr>
+<tr><td>李文宝</td><td>¥0</td><td>¥567.08</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥567.08</td></tr>
+<tr class='hl'><td>杨杰</td><td>¥134.70</td><td>¥806.28</td><td>¥146.70</td><td>¥0</td><td>¥54</td><td>¥1,141.68</td></tr>
+<tr><td>柳茜</td><td>¥392.09</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥392.09</td></tr>
+<tr><td>植慧贤</td><td>¥0</td><td>¥30</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥30</td></tr>
+<tr><td>郭凤娴</td><td>¥0</td><td>¥779.10</td><td>¥68.20</td><td>¥0</td><td>¥0</td><td>¥847.30</td></tr>
+<tr><td>郭莹莹</td><td>¥0</td><td>¥0</td><td>¥23.80</td><td>¥0</td><td>¥0</td><td>¥23.80</td></tr>
+<tr><td>钟敏捷</td><td>¥0</td><td>¥0</td><td>¥44.43</td><td>¥0</td><td>¥0</td><td>¥44.43</td></tr>
+<tr><td>陈洋洋</td><td>¥0</td><td>¥69.50</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥69.50</td></tr>
+<tr><td>马继就</td><td>¥25.45</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥25.45</td></tr>
+<tr><td>麦健维</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥60</td><td>¥60</td></tr>
+<tr><td>黄东伟</td><td>¥0</td><td>¥127.20</td><td>¥768.99</td><td>¥992.38</td><td>¥122</td><td>¥2,010.57</td></tr>
+<tr><td>黄智光</td><td>¥877.45</td><td>¥105.10</td><td>¥0</td><td>¥195.40</td><td>¥0</td><td>¥1,177.95</td></tr>
 </tbody>
-<tfoot><tr><td>月度合计</td><td>¥1,787</td><td>¥3,057</td><td>¥1,585</td><td>¥1,568</td><td>¥7,997</td></tr></tfoot>
+<tfoot><tr><td>月度合计</td><td>¥1,787.21</td><td>¥3,056.96</td><td>¥1,584.71</td><td>¥1,568.48</td><td>¥236</td><td>¥8,233.36</td></tr></tfoot>
 </table>
 </div>
 
 <h2>📊 费用类型分析（按月份）</h2>
 <div class="tbl-wrap">
 <table>
-<thead><tr><th>费用类别</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>合计</th></tr></thead>
+<thead><tr><th>费用类别</th><th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>8月</th><th>合计</th></tr></thead>
 <tbody>
-<tr><td>交通费</td><td>¥876</td><td>¥1,475</td><td>¥1,048</td><td>¥672</td><td>¥4,071</td></tr><tr><td>餐费</td><td>¥115</td><td>¥870</td><td>¥285</td><td>¥315</td><td>¥1,585</td></tr><tr><td>拍摄设备采购</td><td>¥701</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥701</td></tr><tr><td>住宿费</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥450</td><td>¥450</td></tr><tr><td>交通2</td><td>¥0</td><td>¥227</td><td>¥163</td><td>¥0</td><td>¥389</td></tr><tr><td>U盘</td><td>¥0</td><td>¥156</td><td>¥0</td><td>¥0</td><td>¥156</td></tr><tr><td>交通1</td><td>¥0</td><td>¥68</td><td>¥60</td><td>¥0</td><td>¥127</td></tr><tr><td>纸巾</td><td>¥0</td><td>¥121</td><td>¥0</td><td>¥0</td><td>¥121</td></tr><tr><td>运营</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥113</td><td>¥113</td></tr><tr><td>即梦AI会员</td><td>¥0</td><td>¥69</td><td>¥0</td><td>¥0</td><td>¥69</td></tr><tr><td>高速费</td><td>¥0</td><td>¥57</td><td>¥0</td><td>¥0</td><td>¥57</td></tr><tr><td>餐费补贴</td><td>¥50</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥50</td></tr><tr><td>停车费</td><td>¥45</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥45</td></tr><tr><td>餐补</td><td>¥0</td><td>¥15</td><td>¥30</td><td>¥0</td><td>¥45</td></tr><tr><td>ai软件vip</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥18</td><td>¥18</td></tr>
+<tr><td>交通费</td><td>¥875.86</td><td>¥1,475.38</td><td>¥1,047.54</td><td>¥672.09</td><td>¥82</td><td>¥4,152.87</td></tr>
+<tr><td>餐费</td><td>¥115</td><td>¥870</td><td>¥285</td><td>¥315</td><td>¥60</td><td>¥1,645</td></tr>
+<tr><td>拍摄设备采购</td><td>¥701.35</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥701.35</td></tr>
+<tr><td>住宿费</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥450</td><td>¥0</td><td>¥450</td></tr>
+<tr><td>交通2</td><td>¥0</td><td>¥226.80</td><td>¥162.57</td><td>¥0</td><td>¥0</td><td>¥389.37</td></tr>
+<tr><td>U盘</td><td>¥0</td><td>¥155.60</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥155.60</td></tr>
+<tr><td>交通1</td><td>¥0</td><td>¥67.50</td><td>¥59.60</td><td>¥0</td><td>¥0</td><td>¥127.10</td></tr>
+<tr><td>纸巾</td><td>¥0</td><td>¥120.68</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥120.68</td></tr>
+<tr><td>运营</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥113.40</td><td>¥0</td><td>¥113.40</td></tr>
+<tr><td>即梦AI会员</td><td>¥0</td><td>¥69</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥69</td></tr>
+<tr><td>高速费</td><td>¥0</td><td>¥57</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥57</td></tr>
+<tr><td>快递费</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥54</td><td>¥54</td></tr>
+<tr><td>餐费补贴</td><td>¥50</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥50</td></tr>
+<tr><td>停车费</td><td>¥45</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥45</td></tr>
+<tr><td>餐补</td><td>¥0</td><td>¥15</td><td>¥30</td><td>¥0</td><td>¥0</td><td>¥45</td></tr>
+<tr><td>跑腿费</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥40</td><td>¥40</td></tr>
+<tr><td>ai软件vip</td><td>¥0</td><td>¥0</td><td>¥0</td><td>¥17.99</td><td>¥0</td><td>¥17.99</td></tr>
 </tbody>
-<tfoot><tr><td>合计</td><td>¥1,787</td><td>¥3,057</td><td>¥1,585</td><td>¥1,568</td><td>¥7,997</td></tr></tfoot>
+<tfoot><tr><td>合计</td><td>¥1,787.21</td><td>¥3,056.96</td><td>¥1,584.71</td><td>¥1,568.48</td><td>¥236</td><td>¥8,233.36</td></tr></tfoot>
 </table>
 </div>
 </body></html>
