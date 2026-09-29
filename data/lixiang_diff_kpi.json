@@ -1,17 +1,17 @@
 {
   "hero": {
-    "value": "5",
+    "value": "3",
     "label": "09月待催立项"
   },
   "progress": {
-    "text": "生成于 2026-09-27 08:30",
+    "text": "生成于 2026-09-29 08:41",
     "percent": null,
     "color": ""
   },
   "kpis": [
     {
       "k": "待催立项",
-      "v": "5",
+      "v": "3",
       "unit": "个",
       "color": "danger"
     },
@@ -23,11 +23,11 @@
     },
     {
       "k": "最紧急",
-      "v": "029",
+      "v": "035",
       "unit": "",
       "color": "warn"
     }
   ],
-  "updated_at": "2026-09-27 08:30",
+  "updated_at": "2026-09-29 08:41",
   "data_source": "tencent"
 }
