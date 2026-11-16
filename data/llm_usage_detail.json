@@ -1,5 +1,5 @@
 {
-  "queried_at": "2026-11-16 16:19:13",
+  "queried_at": "2026-11-16 23:17:30",
   "deepseek": {
     "ok": true,
     "currency": "CNY",
@@ -24,12 +24,12 @@
     "models": [
       {
         "model_name": "general",
-        "interval_remaining_pct": 0,
-        "weekly_remaining_pct": 89,
-        "interval_status": 2,
+        "interval_remaining_pct": 66,
+        "weekly_remaining_pct": 76,
+        "interval_status": 1,
         "weekly_status": 1,
-        "interval_start_time": 1794799752,
-        "interval_end_time": 1794817752,
+        "interval_start_time": 1794837384,
+        "interval_end_time": 1794855384,
         "weekly_start_time": 1794799752,
         "weekly_end_time": 1795404552
       }
@@ -37,9 +37,9 @@
     "raw": {
       "model_remains": [
         {
-          "start_time": 1794799752646,
-          "end_time": 1794817752646,
-          "remains_time": 598693,
+          "start_time": 1794837384675,
+          "end_time": 1794855384675,
+          "remains_time": 13133629,
           "current_interval_total_count": 0,
           "current_interval_usage_count": 0,
           "model_name": "general",
@@ -47,11 +47,11 @@
           "current_weekly_usage_count": 0,
           "weekly_start_time": 1794799752646,
           "weekly_end_time": 1795404552646,
-          "weekly_remains_time": 587398693,
-          "current_interval_status": 2,
-          "current_interval_remaining_percent": 0,
+          "weekly_remains_time": 562301600,
+          "current_interval_status": 1,
+          "current_interval_remaining_percent": 66,
           "current_weekly_status": 1,
-          "current_weekly_remaining_percent": 89
+          "current_weekly_remaining_percent": 76
         }
       ],
       "base_resp": {
@@ -63,9 +63,9 @@
   "zai": {
     "ok": true,
     "level": "lite",
-    "hour5_used_pct": 37.0,
-    "weekly_used_pct": 64.0,
-    "hour5_reset_at": 1794832038,
+    "hour5_used_pct": 6.0,
+    "weekly_used_pct": 66.0,
+    "hour5_reset_at": 1794852101,
     "weekly_reset_at": 1794885163,
     "mcp_current": null,
     "mcp_remaining": null,
@@ -80,19 +80,19 @@
             "unit": 3,
             "number": 5,
             "usage": 2000,
-            "currentValue": 746,
-            "remaining": 1253,
-            "percentage": 37,
-            "nextResetTime": 1794832038758
+            "currentValue": 126,
+            "remaining": 1873,
+            "percentage": 6,
+            "nextResetTime": 1794852101243
           },
           {
             "type": "CREDIT_LIMIT",
             "unit": 6,
             "number": 1,
             "usage": 10000,
-            "currentValue": 6497,
-            "remaining": 3502,
-            "percentage": 64,
+            "currentValue": 6666,
+            "remaining": 3333,
+            "percentage": 66,
             "nextResetTime": 1794885163974
           }
         ],
@@ -132,5 +132,5 @@
       }
     }
   },
-  "synced_at": "2026-11-16 16:19:14"
+  "synced_at": "2026-11-16 23:17:32"
 }
