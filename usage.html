@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LLM 用量明细</title><style>
+body{font-family:-apple-system,'PingFang SC',sans-serif;background:#0a0e14;color:#e2e8f0;margin:0;padding:20px}
+h1{font-size:20px;color:#f1f5f9;margin:0 0 4px}
+.meta{color:#94a3b8;font-size:13px;margin-bottom:18px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:1160px}
+.card{background:#1a2332;border:1px solid #334155;border-radius:10px;padding:18px 20px}
+.card.error{border-color:#7f1d1d;background:#1c1216}
+.card h2{font-size:16px;color:#f1f5f9;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.tag{background:#222b3a;color:#9eacd0;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:500}
+.big{font-size:38px;font-weight:700;margin:8px 0 4px;letter-spacing:.5px}
+.big.warn{color:#f59e0b}.big.pos{color:#10b981}.big.err{color:#ef4444}
+.row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid #263244;font-size:13px;gap:10px}
+.row:last-child{border-bottom:0}
+.row .k{color:#94a3b8}.row .v{font-weight:600}
+.bar-wrap{background:#0f172a;border-radius:6px;height:10px;overflow:hidden;margin:6px 0 2px}
+.bar{height:100%;border-radius:6px;transition:width .3s}
+.note{color:#94a3b8;font-size:12px;margin-top:10px;line-height:1.5}
+.err-msg{color:#f87171;font-size:13px;margin:8px 0}
+.back-home{display:inline-block;margin-bottom:14px;background:#1a2332;color:#e2e8f0;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:13px;border:1px solid #334155;transition:all .15s}
+.back-home:hover{background:#1e3a8a;border-color:#3b82f6;color:#fff}
+#refresh-btn{position:fixed;top:12px;right:12px;z-index:9999;display:inline-block;background:#1a2332;color:#e2e8f0;padding:8px 14px;border-radius:8px;font-size:13px;border:1px solid #334155;cursor:pointer;font-family:inherit}
+@media(max-width:767px){body{padding:14px}.back-home{padding:6px 10px;font-size:12px}.big{font-size:32px}}
+</style></head><body>
+<a class="back-home" href="./">← 返回主页面</a>
+<button id="refresh-btn" onclick="location.reload()">🔄 刷新</button>
+<h1>LLM 用量明细</h1>
+<div class="meta" id="meta">加载中…</div>
+<div class="grid" id="grid"></div>
+<div class="meta" style="margin-top:16px" id="foot"></div>
+<script>
+const fmtPct = p => (p==null ? '—' : (Math.round(p*10)/10)+'%');
+const clsFor = p => (p==null ? '' : p>=90 ? 'err' : p>=70 ? 'warn' : 'pos');
+const colorFor = p => (p==null ? '#64748b' : p>=90 ? '#ef4444' : p>=70 ? '#f59e0b' : '#10b981');
+const fmtTs = ts => ts ? new Date(ts*1000).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false}) : '—';
+function bar(p){ return `<div class="bar-wrap"><div class="bar" style="width:${Math.min(p||0,100)}%;background:${colorFor(p)}"></div></div>`; }
+
+function cardDeepseek(d){
+  if(!d||!d.ok) return `<div class="card error"><h2>DeepSeek 余额</h2><div class="err-msg">查询失败：${(d&&d.error)||'未知错误'}</div></div>`;
+  return `<div class="card"><h2>DeepSeek 余额 <span class="tag">${d.currency||'CNY'}</span></h2>
+    <div class="big ${d.total_balance<20?'warn':'pos'}">¥${d.total_balance}</div>
+    <div class="row"><span class="k">充值余额</span><span class="v">¥${d.topped_up_balance}</span></div>
+    <div class="row"><span class="k">赠送余额</span><span class="v">¥${d.granted_balance}</span></div>
+    <div class="row"><span class="k">可用</span><span class="v">${d.is_available?'✅ 是':'❌ 否'}</span></div></div>`;
+}
+function cardZai(z){
+  if(!z||!z.ok) return `<div class="card error"><h2>智谱 GLM</h2><div class="err-msg">查询失败：${(z&&z.error)||'未知错误'}</div></div>`;
+  return `<div class="card"><h2>智谱 GLM <span class="tag">${z.level||''}</span></h2>
+    <div class="row"><span class="k">5h 窗口已用</span><span class="v">${fmtPct(z.hour5_used_pct)}</span></div>${bar(z.hour5_used_pct)}
+    <div class="row"><span class="k">5h 重置</span><span class="v">${fmtTs(z.hour5_reset_at)}</span></div>
+    <div class="row" style="margin-top:10px"><span class="k">周窗口已用</span><span class="v">${fmtPct(z.weekly_used_pct)}</span></div>${bar(z.weekly_used_pct)}
+    <div class="row"><span class="k">周重置</span><span class="v">${fmtTs(z.weekly_reset_at)}</span></div></div>`;
+}
+function cardAmd(a){
+  if(!a||!a.ok) return `<div class="card error"><h2>AMD 日额度</h2><div class="err-msg">查询失败：${(a&&a.error)||'未知错误'}</div></div>`;
+  const t=a.today||{};
+  return `<div class="card"><h2>AMD 日额度 <span class="tag">${a.model||''}</span></h2>
+    <div class="big ${clsFor(a.used_pct)}">${fmtPct(a.used_pct)}</div>
+    <div class="row"><span class="k">今日消耗</span><span class="v">$${a.cost_usd_est} / $${a.daily_quota_usd}</span></div>
+    <div class="row"><span class="k">今日调用</span><span class="v">${t.calls??'—'} 次 · ${((t.total||0)/10000).toFixed(1)}万 tok</span></div>
+    <div class="row"><span class="k">日期</span><span class="v">${t.date||'—'}</span></div>
+    <div class="note">${a.note||''}</div></div>`;
+}
+function cardMinimax(m){
+  if(!m||!m.ok) return `<div class="card error"><h2>MiniMax 窗口</h2><div class="err-msg">查询失败：${(m&&m.error)||'未知错误'}</div></div>`;
+  return `<div class="card"><h2>MiniMax 窗口</h2><div class="big pos">正常</div></div>`;
+}
+
+async function load(){
+  const grid=document.getElementById('grid'), meta=document.getElementById('meta');
+  try{
+    const r=await fetch('data/llm_usage_detail.json?t='+Date.now(),{cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d=await r.json();
+    meta.textContent='数据时间 '+(d.queried_at||'—')+' · 快照同步 '+(d.synced_at||'—')+'（每天 12:00 随用量日报自动更新）';
+    grid.innerHTML = cardDeepseek(d.deepseek)+cardZai(d.zai)+cardAmd(d.amd)+cardMinimax(d.minimax);
+    document.getElementById('foot').textContent='实时版：本机打开 http://127.0.0.1:43121/（每次打开现场刷新）';
+  }catch(e){
+    meta.textContent='';
+    grid.innerHTML=`<div class="card error"><h2>加载失败</h2><div class="err-msg">${e.message}——明细数据还没同步，等 12:00 日报或让 Hermes 跑 usage_detail_sync.py</div></div>`;
+  }
+}
+load();
+</script>
+</body></html>
