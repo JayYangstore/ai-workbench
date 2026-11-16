@@ -3,7 +3,7 @@
 body{font-family:-apple-system,'PingFang SC',sans-serif;background:#0a0e14;color:#e2e8f0;margin:0;padding:20px}
 h1{font-size:20px;color:#f1f5f9;margin:0 0 4px}
 .meta{color:#94a3b8;font-size:13px;margin-bottom:18px}
-.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:1160px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr));max-width:1160px}
 .card{background:#1a2332;border:1px solid #334155;border-radius:10px;padding:18px 20px}
 .card.error{border-color:#7f1d1d;background:#1c1216}
 .card h2{font-size:16px;color:#f1f5f9;margin:0 0 12px;display:flex;align-items:center;gap:8px}
@@ -17,10 +17,12 @@ h1{font-size:20px;color:#f1f5f9;margin:0 0 4px}
 .bar{height:100%;border-radius:6px;transition:width .3s}
 .note{color:#94a3b8;font-size:12px;margin-top:10px;line-height:1.5}
 .err-msg{color:#f87171;font-size:13px;margin:8px 0}
+.sub{border-top:1px solid #263244;padding-top:12px;margin-top:12px}
+.sub:first-of-type{border-top:0;padding-top:0;margin-top:0}
 .back-home{display:inline-block;margin-bottom:14px;background:#1a2332;color:#e2e8f0;text-decoration:none;padding:8px 14px;border-radius:8px;font-size:13px;border:1px solid #334155;transition:all .15s}
 .back-home:hover{background:#1e3a8a;border-color:#3b82f6;color:#fff}
 #refresh-btn{position:fixed;top:12px;right:12px;z-index:9999;display:inline-block;background:#1a2332;color:#e2e8f0;padding:8px 14px;border-radius:8px;font-size:13px;border:1px solid #334155;cursor:pointer;font-family:inherit}
-@media(max-width:767px){body{padding:14px}.back-home{padding:6px 10px;font-size:12px}.big{font-size:32px}}
+@media(max-width:767px){body{padding:14px}.back-home{padding:6px 10px;font-size:12px}.big{font-size:32px}.grid{grid-template-columns:1fr}}
 </style></head><body>
 <a class="back-home" href="./">← 返回主页面</a>
 <button id="refresh-btn" onclick="location.reload()">🔄 刷新</button>
@@ -63,7 +65,20 @@ function cardAmd(a){
 }
 function cardMinimax(m){
   if(!m||!m.ok) return `<div class="card error"><h2>MiniMax 窗口</h2><div class="err-msg">查询失败：${(m&&m.error)||'未知错误'}</div></div>`;
-  return `<div class="card"><h2>MiniMax 窗口</h2><div class="big pos">正常</div></div>`;
+  const models = m.models||[];
+  if(!models.length) return `<div class="card error"><h2>MiniMax 窗口</h2><div class="err-msg">无模型窗口数据</div></div>`;
+  // 5h + 周窗两条进度（remaining → used）
+  const rows = models.map(mo=>{
+    const i5=100-(mo.interval_remaining_pct??0), wk=100-(mo.weekly_remaining_pct??0);
+    return `<div class="sub">
+      <div class="row"><span class="k">5h 窗已用</span><span class="v">${i5}%</span></div>${bar(i5)}
+      <div class="row"><span class="k">5h 重置</span><span class="v">${fmtTs(mo.interval_end_time)}</span></div>
+      <div class="row" style="margin-top:10px"><span class="k">周窗已用</span><span class="v">${wk}%</span></div>${bar(wk)}
+      <div class="row"><span class="k">周重置</span><span class="v">${fmtTs(mo.weekly_end_time)}</span></div>
+    </div>`;
+  }).join('<div style="height:12px"></div>');
+  const name = models[0].model_name==='general' ? '' : ` <span class="tag">${models[0].model_name}</span>`;
+  return `<div class="card"><h2>MiniMax 窗口${name}</h2>${rows}</div>`;
 }
 
 async function load(){
@@ -73,7 +88,7 @@ async function load(){
     if(!r.ok) throw new Error('HTTP '+r.status);
     const d=await r.json();
     meta.textContent='数据时间 '+(d.queried_at||'—')+' · 快照同步 '+(d.synced_at||'—')+'（每天 12:00 随用量日报自动更新）';
-    grid.innerHTML = cardDeepseek(d.deepseek)+cardZai(d.zai)+cardAmd(d.amd)+cardMinimax(d.minimax);
+    grid.innerHTML = cardMinimax(d.minimax)+cardZai(d.zai)+cardDeepseek(d.deepseek)+cardAmd(d.amd);
     document.getElementById('foot').textContent='实时版：本机打开 http://127.0.0.1:43121/（每次打开现场刷新）';
   }catch(e){
     meta.textContent='';
