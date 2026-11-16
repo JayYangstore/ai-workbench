@@ -1,5 +1,9 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>LLM 用量明细</title><style>
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>LLM 用量明细</title>
+<!-- BUILD:20261116182405 --><style>
 body{font-family:-apple-system,'PingFang SC',sans-serif;background:#0a0e14;color:#e2e8f0;margin:0;padding:20px}
 h1{font-size:20px;color:#f1f5f9;margin:0 0 4px}
 .meta{color:#94a3b8;font-size:13px;margin-bottom:18px}
@@ -96,5 +100,18 @@ async function load(){
   }
 }
 load();
+</script>
+<script>
+// 缓存自愈：GitHub Pages 缓存 HTML 10 分钟，刷新后可能仍是旧版（黑屏无数据）
+(function(){
+  try{
+    var KEY='wb_seen_'+location.pathname;
+    var m=document.documentElement.innerHTML.match(/BUILD:(\d+)/);
+    var cur=m?parseInt(m[1],10):0;
+    var seen=parseInt(sessionStorage.getItem(KEY)||'0',10);
+    if(seen>cur){ location.reload(true); return; }
+    sessionStorage.setItem(KEY,String(cur));
+  }catch(e){}
+})();
 </script>
 </body></html>
