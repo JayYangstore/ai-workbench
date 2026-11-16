@@ -34,7 +34,7 @@ async function refreshDetail(){
   const isPages = host.includes('github.io');
   if (isPages) {
     if (st) { st.style.display = 'inline-block'; st.textContent = '⚠️ Pages 静态,只显示最近快照'; }
-    alert('你正在 Pages 入口 (jayyangstore.github.io)\n\nPages 是静态托管,不能实时刷新.\n\n如需实时刷新请去 ngrok 入口:\nhttps://alone-chowder-wired.ngrok-free.dev/workbench/\n\n点确定后刷新当前页(只显示最近一次 build 快照)');
+    alert('你正在 Pages 入口 (jayyangstore.github.io)\n\nPages 是静态托管,不能实时刷新.\n\n如需实时刷新请在 Mac 本机打开:\nhttp://127.0.0.1:43121/workbench/\n\n点确定后刷新当前页(只显示最近一次快照)');
     setTimeout(() => location.reload(), 1000);
     return;
   }
