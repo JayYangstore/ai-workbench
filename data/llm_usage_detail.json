@@ -1,5 +1,5 @@
 {
-  "queried_at": "2026-11-16 11:29:40",
+  "queried_at": "2026-11-16 12:00:44",
   "deepseek": {
     "ok": true,
     "currency": "CNY",
@@ -24,7 +24,7 @@
     "models": [
       {
         "model_name": "general",
-        "interval_remaining_pct": 99,
+        "interval_remaining_pct": 93,
         "weekly_remaining_pct": 99,
         "interval_status": 1,
         "weekly_status": 1,
@@ -39,7 +39,7 @@
         {
           "start_time": 1794799752646,
           "end_time": 1794817752646,
-          "remains_time": 17974551,
+          "remains_time": 16115280,
           "current_interval_total_count": 0,
           "current_interval_usage_count": 0,
           "model_name": "general",
@@ -47,9 +47,9 @@
           "current_weekly_usage_count": 0,
           "weekly_start_time": 1794799752646,
           "weekly_end_time": 1795404552646,
-          "weekly_remains_time": 604774551,
+          "weekly_remains_time": 602915280,
           "current_interval_status": 1,
-          "current_interval_remaining_percent": 99,
+          "current_interval_remaining_percent": 93,
           "current_weekly_status": 1,
           "current_weekly_remaining_percent": 99
         }
@@ -63,8 +63,8 @@
   "zai": {
     "ok": true,
     "level": "lite",
-    "hour5_used_pct": 42.0,
-    "weekly_used_pct": 56.0,
+    "hour5_used_pct": 43.0,
+    "weekly_used_pct": 57.0,
     "hour5_reset_at": 1794805258,
     "weekly_reset_at": 1794885163,
     "mcp_current": null,
@@ -80,9 +80,9 @@
             "unit": 3,
             "number": 5,
             "usage": 2000,
-            "currentValue": 852,
-            "remaining": 1147,
-            "percentage": 42,
+            "currentValue": 868,
+            "remaining": 1131,
+            "percentage": 43,
             "nextResetTime": 1794805258316
           },
           {
@@ -90,9 +90,9 @@
             "unit": 6,
             "number": 1,
             "usage": 10000,
-            "currentValue": 5689,
-            "remaining": 4310,
-            "percentage": 56,
+            "currentValue": 5705,
+            "remaining": 4294,
+            "percentage": 57,
             "nextResetTime": 1794885163974
           }
         ],
@@ -132,5 +132,5 @@
       }
     }
   },
-  "synced_at": "2026-11-16 11:29:43"
+  "synced_at": "2026-11-16 12:01:17"
 }
