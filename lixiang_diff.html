@@ -1,10 +1,6 @@
 <!DOCTYPE html><html lang="zh"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
 <title>奥迪立项催办看板 · 202611</title>
-<!-- BUILD:20261116182405 -->
 <style>
 body{font-family:-apple-system,'PingFang SC',sans-serif;background:#0a0e14;color:#e2e8f0;margin:0;padding:20px}
 h1{font-size:20px;color:#f1f5f9;margin:0 0 4px}
@@ -43,7 +39,7 @@ async function refreshDetail(){
   const isPages = host.includes('github.io');
   if (isPages) {
     if (st) { st.style.display = 'inline-block'; st.textContent = '⚠️ Pages 静态,只显示最近快照'; }
-    alert('你正在 Pages 入口 (jayyangstore.github.io)\n\nPages 是静态托管,不能实时刷新.\n\n如需实时刷新请在 Mac 本机打开:\nhttp://127.0.0.1:43121/workbench/\n\n点确定后刷新当前页(只显示最近一次快照)');
+    alert('你正在 Pages 入口 (jayyangstore.github.io)\n\nPages 是静态托管,不能实时刷新.\n\n如需实时刷新请去 ngrok 入口:\nhttps://alone-chowder-wired.ngrok-free.dev/workbench/\n\n点确定后刷新当前页(只显示最近一次 build 快照)');
     setTimeout(() => location.reload(), 1000);
     return;
   }
@@ -62,26 +58,15 @@ async function refreshDetail(){
   }
 }
 </script><a class="back-home" href="./">← 返回主页面</a>
-<h1>📋 奥迪立项催办看板 <span class="count red">202611月 · 待催3</span> <span class="count gray">推迟0</span></h1>
-<div class="sub">数据源：腾讯在线表（全字段） vs 立项汇总表（已立项）｜规则：活动日-3天=必须立项｜生成 2026-11-15 08:31</div>
+<h1>📋 奥迪立项催办看板 <span class="count red">202611月 · 待催4</span> <span class="count gray">推迟0</span></h1>
+<div class="sub">数据源：腾讯在线表（全字段） vs 立项汇总表（已立项）｜规则：活动日-3天=必须立项｜生成 2026-11-16 23:08</div>
 
-<div class="section"><h2>🔴 待催立项（3）</h2>
-<table><thead><tr><th>来源</th><th>紧急度</th><th>项目编号</th><th>活动编号</th><th>活动性质</th><th>活动目的</th><th>活动分类</th><th>活动主题+名称</th><th>活动开始时间</th><th>活动结束时间</th><th>参与代理商代码</th><th>参与代理商名称</th><th>活动车型</th><th>常规区域市场费</th><th>代理商出资</th><th>区域运营补强</th><th>合计</th><th>有效线索目标</th><th>大定目标</th><th>CPL</th><th>CPS</th></tr></thead><tbody><tr><td>BTL-11月</td><td><span class="badge overdue">🔴已逾期 1天</span></td><td><b>SAR2-202611-BTL-027</b></td><td>SAR2-202611-BTL-027</td><td>BTL</td><td>集客</td><td>BC展补强/小车展</td><td>上汽奥迪广州国际车展-启动会</td><td>2026/11/17</td><td>2026/11/17</td><td></td><td></td><td>E5/E7X/A5L/A7L/Q6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>BTL-11月</td><td><span class="badge warn">🟡待催 剩5天</span></td><td><b>SAR2-202611-BTL-023</b></td><td>SAR2-202611-BTL-023</td><td>BTL</td><td>集客</td><td>商场静展</td><td>超享热爱畅行启航-联盛快乐城商超展</td><td>2026/11/23</td><td>2026/11/29</td><td>76643109</td><td>九江永迪用户中心</td><td>E7X+A5L</td><td>29,818.50</td><td>12,779.36</td><td></td><td></td><td>50</td><td>2</td><td>596</td><td>14909</td></tr><tr><td>BTL-11月</td><td><span class="badge warn">日期待解析</span></td><td><b>SAR2-202611-BTL-012</b></td><td>SAR2-202611-BTL-012</td><td>BTL</td><td>集客</td><td>BC展补强/小车展</td><td>热聚湾区 倾城盛会-上汽奥迪广州国际车展</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div>
+<div class="section"><h2>🔴 待催立项（4）</h2>
+<table><thead><tr><th>来源</th><th>紧急度</th><th>项目编号</th><th>活动编号</th><th>活动性质</th><th>活动目的</th><th>活动分类</th><th>活动主题+名称</th><th>活动开始时间</th><th>活动结束时间</th><th>参与代理商代码</th><th>参与代理商名称</th><th>活动车型</th><th>常规区域市场费</th><th>代理商出资</th><th>区域运营补强</th><th>合计</th><th>有效线索目标</th><th>大定目标</th><th>CPL</th><th>CPS</th></tr></thead><tbody><tr><td>BTL-11月</td><td><span class="badge urgent">🟠紧急 剩2天</span></td><td><b>SAR2-202611-BTL-028</b></td><td>SAR2-202611-BTL-028</td><td>BTL</td><td>关爱</td><td>车友会</td><td>AUDI和Ta的朋友们-上汽奥迪南昌车友会</td><td>2026/11/21</td><td>2026/11/21</td><td>76643069</td><td>南昌利泰用户中心</td><td>E7X+E5</td><td>9,980.70</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>BTL-11月</td><td><span class="badge warn">🟡待催 剩3天</span></td><td><b>SAR2-202611-BTL-027</b></td><td>SAR2-202611-BTL-027</td><td>BTL</td><td>关爱</td><td>车友会</td><td>AUDI和ta的朋友们——上汽奥迪长沙车友会野趣集结·不负热爱</td><td>2026/11/22</td><td>2026/11/22</td><td>76640179
+76640019</td><td>湖南麓谷腾迪用户中心
+长沙腾迪用户中心</td><td>E7X</td><td>49,955.00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>BTL-11月</td><td><span class="badge warn">🟡待催 剩4天</span></td><td><b>SAR2-202611-BTL-023</b></td><td>SAR2-202611-BTL-023</td><td>BTL</td><td>集客</td><td>商场静展</td><td>超享热爱畅行启航-联盛快乐城商超展</td><td>2026/11/23</td><td>2026/11/29</td><td>76643109</td><td>九江永迪用户中心</td><td>E7X+A5L</td><td>29,818.50</td><td>12,779.36</td><td></td><td></td><td>50</td><td>2</td><td>596</td><td>14909</td></tr><tr><td>BTL-11月</td><td><span class="badge warn">日期待解析</span></td><td><b>SAR2-202611-BTL-012</b></td><td>SAR2-202611-BTL-012</td><td>BTL</td><td>集客</td><td>BC展补强/小车展</td><td>热聚湾区 倾城盛会-上汽奥迪广州国际车展</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div>
 <div class="section"><h2>🚐 待催大篷车（0）</h2>
 <table><thead><tr><th>来源</th><th>紧急度</th><th>项目</th><th>活动名称</th><th>活动所在省</th><th>活动所在市</th><th>参与代理商</th><th>代理商代码</th><th>活动开始时间</th><th>活动结束时间</th><th>场租</th><th>搭建运营</th><th>费用合计</th><th>潜客目标</th><th>订单目标</th></tr></thead><tbody></tbody></table></div>
 <div class="section"><h2>⏸ 已推迟（0）</h2>
 <table><thead><tr><th>来源</th><th>紧急度</th><th>项目编号</th><th>活动编号</th><th>活动性质</th><th>活动目的</th><th>活动分类</th><th>活动主题+名称</th><th>活动开始时间</th><th>活动结束时间</th><th>参与代理商代码</th><th>参与代理商名称</th><th>活动车型</th><th>常规区域市场费</th><th>代理商出资</th><th>区域运营补强</th><th>合计</th><th>有效线索目标</th><th>大定目标</th><th>CPL</th><th>CPS</th></tr></thead><tbody></tbody></table></div>
-<script>
-// 缓存自愈：GitHub Pages 缓存 HTML 10 分钟，刷新后可能仍是旧版（黑屏无数据）
-(function(){
-  try{
-    var KEY='wb_seen_'+location.pathname;
-    var m=document.documentElement.innerHTML.match(/BUILD:(\d+)/);
-    var cur=m?parseInt(m[1],10):0;
-    var seen=parseInt(sessionStorage.getItem(KEY)||'0',10);
-    if(seen>cur){ location.reload(true); return; }
-    sessionStorage.setItem(KEY,String(cur));
-  }catch(e){}
-})();
-</script>
 </body></html>
