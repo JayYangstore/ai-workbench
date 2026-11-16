@@ -1,5 +1,5 @@
 {
-  "queried_at": "2026-11-16 10:09:15",
+  "queried_at": "2026-11-16 11:16:46",
   "deepseek": {
     "ok": true,
     "currency": "CNY",
@@ -21,7 +21,7 @@
   },
   "minimax": {
     "ok": false,
-    "error": "model_remains is empty",
+    "error": "MiniMax 套餐状态异常: no active token plan subscription (code 2062)",
     "raw": {
       "model_remains": null,
       "base_resp": {
@@ -33,8 +33,8 @@
   "zai": {
     "ok": true,
     "level": "lite",
-    "hour5_used_pct": 6.0,
-    "weekly_used_pct": 49.0,
+    "hour5_used_pct": 38.0,
+    "weekly_used_pct": 56.0,
     "hour5_reset_at": 1794805258,
     "weekly_reset_at": 1794885163,
     "mcp_current": null,
@@ -50,9 +50,9 @@
             "unit": 3,
             "number": 5,
             "usage": 2000,
-            "currentValue": 125,
-            "remaining": 1874,
-            "percentage": 6,
+            "currentValue": 765,
+            "remaining": 1234,
+            "percentage": 38,
             "nextResetTime": 1794805258316
           },
           {
@@ -60,9 +60,9 @@
             "unit": 6,
             "number": 1,
             "usage": 10000,
-            "currentValue": 4962,
-            "remaining": 5037,
-            "percentage": 49,
+            "currentValue": 5602,
+            "remaining": 4397,
+            "percentage": 56,
             "nextResetTime": 1794885163974
           }
         ],
@@ -77,30 +77,30 @@
     "model": "DeepSeek-V4-Flash",
     "today": {
       "date": "2026-11-16",
-      "in": 585051,
-      "out": 3443,
-      "total": 588494,
-      "calls": 6,
+      "in": 2023372,
+      "out": 9012,
+      "total": 2032384,
+      "calls": 11,
       "models": [
         "DeepSeek-V4.1-Flash"
       ]
     },
-    "daily_quota_usd": 10.0,
-    "cost_usd_est": 0.0829,
-    "used_pct": 0.8287,
-    "remaining_pct": 99.1713,
+    "daily_quota_usd": 1.0,
+    "cost_usd_est": 0.2858,
+    "used_pct": 28.5795,
+    "remaining_pct": 71.4205,
     "note": "额度为估算（AMD 后台无公开查询 API），已用% 按 $/天折算，请以后台实际显示为准",
     "raw": {
       "2026-11-16": {
-        "in": 585051,
-        "out": 3443,
-        "total": 588494,
-        "calls": 6,
+        "in": 2023372,
+        "out": 9012,
+        "total": 2032384,
+        "calls": 11,
         "models": [
           "DeepSeek-V4.1-Flash"
         ]
       }
     }
   },
-  "synced_at": "2026-11-16 10:48:44"
+  "synced_at": "2026-11-16 11:16:50"
 }
