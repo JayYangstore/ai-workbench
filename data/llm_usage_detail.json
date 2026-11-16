@@ -1,0 +1,106 @@
+{
+  "queried_at": "2026-11-16 10:09:15",
+  "deepseek": {
+    "ok": true,
+    "currency": "CNY",
+    "total_balance": 39.01,
+    "granted_balance": 0.0,
+    "topped_up_balance": 39.01,
+    "is_available": true,
+    "raw": {
+      "is_available": true,
+      "balance_infos": [
+        {
+          "currency": "CNY",
+          "total_balance": "39.01",
+          "granted_balance": "0.00",
+          "topped_up_balance": "39.01"
+        }
+      ]
+    }
+  },
+  "minimax": {
+    "ok": false,
+    "error": "model_remains is empty",
+    "raw": {
+      "model_remains": null,
+      "base_resp": {
+        "status_code": 2062,
+        "status_msg": "no active token plan subscription"
+      }
+    }
+  },
+  "zai": {
+    "ok": true,
+    "level": "lite",
+    "hour5_used_pct": 6.0,
+    "weekly_used_pct": 49.0,
+    "hour5_reset_at": 1794805258,
+    "weekly_reset_at": 1794885163,
+    "mcp_current": null,
+    "mcp_remaining": null,
+    "mcp_usage": null,
+    "raw": {
+      "code": 200,
+      "msg": "Operation successful",
+      "data": {
+        "limits": [
+          {
+            "type": "CREDIT_LIMIT",
+            "unit": 3,
+            "number": 5,
+            "usage": 2000,
+            "currentValue": 125,
+            "remaining": 1874,
+            "percentage": 6,
+            "nextResetTime": 1794805258316
+          },
+          {
+            "type": "CREDIT_LIMIT",
+            "unit": 6,
+            "number": 1,
+            "usage": 10000,
+            "currentValue": 4962,
+            "remaining": 5037,
+            "percentage": 49,
+            "nextResetTime": 1794885163974
+          }
+        ],
+        "level": "lite"
+      },
+      "success": true
+    }
+  },
+  "amd": {
+    "ok": true,
+    "provider": "amd",
+    "model": "DeepSeek-V4-Flash",
+    "today": {
+      "date": "2026-11-16",
+      "in": 585051,
+      "out": 3443,
+      "total": 588494,
+      "calls": 6,
+      "models": [
+        "DeepSeek-V4.1-Flash"
+      ]
+    },
+    "daily_quota_usd": 10.0,
+    "cost_usd_est": 0.0829,
+    "used_pct": 0.8287,
+    "remaining_pct": 99.1713,
+    "note": "额度为估算（AMD 后台无公开查询 API），已用% 按 $/天折算，请以后台实际显示为准",
+    "raw": {
+      "2026-11-16": {
+        "in": 585051,
+        "out": 3443,
+        "total": 588494,
+        "calls": 6,
+        "models": [
+          "DeepSeek-V4.1-Flash"
+        ]
+      }
+    }
+  },
+  "synced_at": "2026-11-16 10:48:44"
+}
