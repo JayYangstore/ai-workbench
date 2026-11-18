@@ -1,10 +1,10 @@
 {
-  "queried_at": "2026-11-17 12:01:15",
+  "queried_at": "2026-11-18 12:01:08",
   "deepseek": {
     "ok": true,
     "currency": "CNY",
-    "total_balance": 38.89,
-    "granted_balance": 0.0,
+    "total_balance": 41.86,
+    "granted_balance": 2.96,
     "topped_up_balance": 38.89,
     "is_available": true,
     "raw": {
@@ -12,8 +12,8 @@
       "balance_infos": [
         {
           "currency": "CNY",
-          "total_balance": "38.89",
-          "granted_balance": "0.00",
+          "total_balance": "41.86",
+          "granted_balance": "2.96",
           "topped_up_balance": "38.89"
         }
       ]
@@ -24,12 +24,12 @@
     "models": [
       {
         "model_name": "general",
-        "interval_remaining_pct": 60,
-        "weekly_remaining_pct": 70,
+        "interval_remaining_pct": 42,
+        "weekly_remaining_pct": 44,
         "interval_status": 1,
         "weekly_status": 1,
-        "interval_start_time": 1794873627,
-        "interval_end_time": 1794891627,
+        "interval_start_time": 1794958315,
+        "interval_end_time": 1794976315,
         "weekly_start_time": 1794799752,
         "weekly_end_time": 1795404552
       }
@@ -37,9 +37,9 @@
     "raw": {
       "model_remains": [
         {
-          "start_time": 1794873627383,
-          "end_time": 1794891627383,
-          "remains_time": 3551106,
+          "start_time": 1794958315487,
+          "end_time": 1794976315487,
+          "remains_time": 1846291,
           "current_interval_total_count": 0,
           "current_interval_usage_count": 0,
           "model_name": "general",
@@ -47,11 +47,11 @@
           "current_weekly_usage_count": 0,
           "weekly_start_time": 1794799752646,
           "weekly_end_time": 1795404552646,
-          "weekly_remains_time": 516476369,
+          "weekly_remains_time": 430083450,
           "current_interval_status": 1,
-          "current_interval_remaining_percent": 60,
+          "current_interval_remaining_percent": 42,
           "current_weekly_status": 1,
-          "current_weekly_remaining_percent": 70
+          "current_weekly_remaining_percent": 44
         }
       ],
       "base_resp": {
@@ -63,9 +63,9 @@
   "zai": {
     "ok": true,
     "level": "lite",
-    "hour5_used_pct": 1.0,
-    "weekly_used_pct": 1.0,
-    "hour5_reset_at": 1794903227,
+    "hour5_used_pct": 13.0,
+    "weekly_used_pct": 16.0,
+    "hour5_reset_at": 1794979839,
     "weekly_reset_at": 1795489963,
     "mcp_current": null,
     "mcp_remaining": null,
@@ -80,19 +80,19 @@
             "unit": 3,
             "number": 5,
             "usage": 2000,
-            "currentValue": 15,
-            "remaining": 1984,
-            "percentage": 1,
-            "nextResetTime": 1794903227425
+            "currentValue": 269,
+            "remaining": 1730,
+            "percentage": 13,
+            "nextResetTime": 1794979839593
           },
           {
             "type": "CREDIT_LIMIT",
             "unit": 6,
             "number": 1,
             "usage": 10000,
-            "currentValue": 15,
-            "remaining": 9984,
-            "percentage": 1,
+            "currentValue": 1661,
+            "remaining": 8338,
+            "percentage": 16,
             "nextResetTime": 1795489963983
           }
         ],
@@ -106,7 +106,7 @@
     "provider": "amd",
     "model": "DeepSeek-V4-Flash",
     "today": {
-      "date": "2026-11-17",
+      "date": "2026-11-18",
       "in": 0,
       "out": 0,
       "total": 0,
@@ -119,16 +119,16 @@
     "remaining_pct": 100.0,
     "note": "额度为估算（AMD 后台无公开查询 API），已用% 按 $/天折算，请以后台实际显示为准",
     "raw": {
-      "2026-11-16": {
-        "in": 4453545,
-        "out": 13135,
-        "total": 4466680,
-        "calls": 21,
+      "2026-11-17": {
+        "in": 5865788,
+        "out": 13232,
+        "total": 5879020,
+        "calls": 20,
         "models": [
           "DeepSeek-V4.1-Flash"
         ]
       }
     }
   },
-  "synced_at": "2026-11-17 12:01:16"
+  "synced_at": "2026-11-18 12:01:09"
 }
