@@ -1,5 +1,5 @@
 {
-  "queried_at": "2026-11-24 12:04:00",
+  "queried_at": "2026-11-24 12:04:30",
   "deepseek": {
     "ok": true,
     "currency": "CNY",
@@ -24,7 +24,7 @@
     "models": [
       {
         "model_name": "general",
-        "interval_remaining_pct": 58,
+        "interval_remaining_pct": 57,
         "weekly_remaining_pct": 74,
         "interval_status": 1,
         "weekly_status": 1,
@@ -39,7 +39,7 @@
         {
           "start_time": 1795478432213,
           "end_time": 1795496432213,
-          "remains_time": 3391623,
+          "remains_time": 3361157,
           "current_interval_total_count": 0,
           "current_interval_usage_count": 0,
           "model_name": "general",
@@ -47,9 +47,9 @@
           "current_weekly_usage_count": 0,
           "weekly_start_time": 1795404623205,
           "weekly_end_time": 1796009423205,
-          "weekly_remains_time": 516382615,
+          "weekly_remains_time": 516352149,
           "current_interval_status": 1,
-          "current_interval_remaining_percent": 58,
+          "current_interval_remaining_percent": 57,
           "current_weekly_status": 1,
           "current_weekly_remaining_percent": 74
         }
@@ -130,5 +130,5 @@
       }
     }
   },
-  "synced_at": "2026-11-24 12:04:00"
+  "synced_at": "2026-11-24 12:04:31"
 }
