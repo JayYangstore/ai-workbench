@@ -1,20 +1,20 @@
 {
-  "queried_at": "2026-11-25 12:01:13",
+  "queried_at": "2026-11-26 12:01:29",
   "deepseek": {
     "ok": true,
     "currency": "CNY",
-    "total_balance": 27.91,
+    "total_balance": 25.76,
     "granted_balance": 0.0,
-    "topped_up_balance": 27.91,
+    "topped_up_balance": 25.76,
     "is_available": true,
     "raw": {
       "is_available": true,
       "balance_infos": [
         {
           "currency": "CNY",
-          "total_balance": "27.91",
+          "total_balance": "25.76",
           "granted_balance": "0.00",
-          "topped_up_balance": "27.91"
+          "topped_up_balance": "25.76"
         }
       ]
     }
@@ -24,12 +24,12 @@
     "models": [
       {
         "model_name": "general",
-        "interval_remaining_pct": 70,
-        "weekly_remaining_pct": 54,
-        "interval_status": 1,
+        "interval_remaining_pct": 0,
+        "weekly_remaining_pct": 21,
+        "interval_status": 2,
         "weekly_status": 1,
-        "interval_start_time": 1795564834,
-        "interval_end_time": 1795582834,
+        "interval_start_time": 1795650840,
+        "interval_end_time": 1795668840,
         "weekly_start_time": 1795404623,
         "weekly_end_time": 1796009423
       }
@@ -37,9 +37,9 @@
     "raw": {
       "model_remains": [
         {
-          "start_time": 1795564834566,
-          "end_time": 1795582834566,
-          "remains_time": 3561197,
+          "start_time": 1795650840275,
+          "end_time": 1795668840275,
+          "remains_time": 3149900,
           "current_interval_total_count": 0,
           "current_interval_usage_count": 0,
           "model_name": "general",
@@ -47,11 +47,11 @@
           "current_weekly_usage_count": 0,
           "weekly_start_time": 1795404623205,
           "weekly_end_time": 1796009423205,
-          "weekly_remains_time": 430149836,
-          "current_interval_status": 1,
-          "current_interval_remaining_percent": 70,
+          "weekly_remains_time": 343732830,
+          "current_interval_status": 2,
+          "current_interval_remaining_percent": 0,
           "current_weekly_status": 1,
-          "current_weekly_remaining_percent": 54
+          "current_weekly_remaining_percent": 21
         }
       ],
       "base_resp": {
@@ -63,9 +63,9 @@
   "zai": {
     "ok": true,
     "level": "lite",
-    "hour5_used_pct": 6.0,
-    "weekly_used_pct": 41.0,
-    "hour5_reset_at": 1795584646,
+    "hour5_used_pct": 64.0,
+    "weekly_used_pct": 89.0,
+    "hour5_reset_at": 1795668412,
     "weekly_reset_at": 1796094763,
     "mcp_current": null,
     "mcp_remaining": null,
@@ -80,19 +80,19 @@
             "unit": 3,
             "number": 5,
             "usage": 2000,
-            "currentValue": 134,
-            "remaining": 1865,
-            "percentage": 6,
-            "nextResetTime": 1795584646383
+            "currentValue": 1298,
+            "remaining": 701,
+            "percentage": 64,
+            "nextResetTime": 1795668412961
           },
           {
             "type": "CREDIT_LIMIT",
             "unit": 6,
             "number": 1,
             "usage": 10000,
-            "currentValue": 4157,
-            "remaining": 5842,
-            "percentage": 41,
+            "currentValue": 8956,
+            "remaining": 1043,
+            "percentage": 89,
             "nextResetTime": 1796094763964
           }
         ],
@@ -106,29 +106,31 @@
     "provider": "amd",
     "model": "DeepSeek-V4-Flash",
     "today": {
-      "date": "2026-11-25",
-      "in": 0,
-      "out": 0,
-      "total": 0,
-      "calls": 0,
-      "models": []
+      "date": "2026-11-26",
+      "in": 673293,
+      "out": 5191,
+      "total": 678484,
+      "calls": 12,
+      "models": [
+        "DeepSeek-V4.1-Flash"
+      ]
     },
     "daily_quota_usd": 1.0,
-    "cost_usd_est": 0.0,
-    "used_pct": 0.0,
-    "remaining_pct": 100.0,
+    "cost_usd_est": 0.0957,
+    "used_pct": 9.5715,
+    "remaining_pct": 90.4286,
     "note": "额度为估算（AMD 后台无公开查询 API），已用% 按 $/天折算，请以后台实际显示为准",
     "raw": {
-      "2026-11-24": {
-        "in": 13624012,
-        "out": 29694,
-        "total": 13653706,
-        "calls": 37,
+      "2026-11-26": {
+        "in": 673293,
+        "out": 5191,
+        "total": 678484,
+        "calls": 12,
         "models": [
           "DeepSeek-V4.1-Flash"
         ]
       }
     }
   },
-  "synced_at": "2026-11-25 12:01:13"
+  "synced_at": "2026-11-26 12:01:30"
 }
