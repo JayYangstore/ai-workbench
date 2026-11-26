@@ -1,37 +1,37 @@
 {
   "hero": {
-    "value": "46%",
-    "label": "LLM 套餐 max 已用 46%",
-    "color": "pos"
+    "value": "100%",
+    "label": "LLM 套餐 max 已用 100%",
+    "color": "danger"
   },
   "progress": {
-    "pct": 46,
-    "text": "DS ¥27.91 · MM周46% · 智谱5h6%/周41%"
+    "pct": 100,
+    "text": "DS ¥25.76 · MM周79% · 智谱5h64%/周89%"
   },
   "kpis": [
     {
       "k": "DeepSeek 余额",
-      "v": "¥27.91",
+      "v": "¥25.76",
       "color": "warn"
     },
     {
       "k": "MiniMax 周窗",
-      "v": "46%",
-      "color": "pos"
+      "v": "79%",
+      "color": "warn"
     },
     {
       "k": "智谱 5h",
-      "v": "6%",
+      "v": "64%",
       "color": "pos"
     },
     {
       "k": "智谱 周窗",
-      "v": "41%",
-      "color": "pos"
+      "v": "89%",
+      "color": "warn"
     },
     {
       "k": "AMD 日额度",
-      "v": "0.0%",
+      "v": "9.6%",
       "color": "pos"
     },
     {
@@ -41,7 +41,7 @@
     },
     {
       "k": "数据时间",
-      "v": "2026-11-25 12:00:48",
+      "v": "2026-11-26 12:01:19",
       "color": "neutral"
     }
   ]
